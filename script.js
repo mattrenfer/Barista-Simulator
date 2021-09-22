@@ -1,19 +1,18 @@
-
-
 var makeTheCoffee;
 
-// Start the program
-function startCoffeeSim () {
-    let startAnswer = window.prompt("Start?");
-    if (startAnswer === "Yes" || "yes") {
-      askToMakeCoffee();
+// Start the program & ask to make some coffee
+function startBaristaSim () {
+    let startAnswer = window.prompt("Wanna make some coffee?");
+    if (startAnswer === "Yes" || startAnswer === "yes") {
+      document.write("Let's get started!");
+    }
+    else {
+      document.write("Nah? That's cool...");
     }
 }
 
-startCoffeeSim();
 
-
-// Will you make the coffee?
+// What do you do first?
 function askToMakeCoffee(makeTheCoffee) {
-  document.write('Wanna make some coffee?');
+  
 }
