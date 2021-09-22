@@ -10,9 +10,33 @@
 </head>
 <body>
     <h1>Barista Simulator</h1>
+
     <h2 id="start-button" onclick="startBaristaSim();"><a href="#">START</a></h2>
+
+    <!-- Descriptive text goes here, above choices -->
     <p id="responsePara"></p>
-    <p id="coffeeChoices"></p>
+
+    <!-- User Responses go here -->
+    <div id="userResponses">
+
+        <!-- Yes or No -->
+        <div id="yesOrNo">
+            <h3 class="uiButtons" onclick=""><a href="#">Yes</a></h3>
+            <h3 class="uiButtons" onclick=""><a href="#">No</a></h3>
+        </div>
+        <!-- Coffee Choices -->
+
+        <div id="coffeeChoices">
+            <h3 class="uiButtons" onclick='regular();'><a href='#'>Regular</a></h3>
+            <h3 class="uiButtons">Espresso</h3>
+            <h3 class="uiButtons">Mocha</h3>
+        </div>
+        
+        <!-- To Do List -->
+
+    </div>
+
+
 </body>
 </html>
 

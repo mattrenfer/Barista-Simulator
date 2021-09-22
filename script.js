@@ -1,14 +1,16 @@
 // Start the program & ask to make some coffee
 function startBaristaSim () {
     let para = document.getElementById("responsePara");
-    let startAnswer = window.prompt("Wanna make some coffee?");
-    if (startAnswer === "Yes" || startAnswer === "yes") {
+    para.innerHTML = "Wanna make some coffee?";
+
+    /*if (startAnswer === "Yes" || startAnswer === "yes") {
       para.innerHTML = "Which coffee shall we brew?";
       coffeeSelection();
     }
     else {
       para.innerHTML = "Nah? That's cool...";
     }
+    */
 }
 
 // Coffee to Brew
