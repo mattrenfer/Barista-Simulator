@@ -42,34 +42,7 @@ a:hover {
   color: #ECE0D1;
 }
 
-#coffeeChoices, #yesOrNo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+#coffeeChoices {
+  text-align:center;
   color: #ECE0D1;
-  width: 75%;
-  margin: auto;
-  margin-top: 10px;
-}
-
-/*
-#yesOrNo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  color: #ECE0D1;
-  width: 75%;
-  margin: auto;
-}
-*/
-
-.uiButtons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color:#967259;
-  padding: 10px;
-  border: 1px solid #f2f2f2;
-  width: 25%;
-  margin: auto;
 }
