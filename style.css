@@ -30,10 +30,12 @@ a:hover {
 }
 
 
-#start-button { 
+#start-button, #reset-button { 
   background-color:#967259;
   padding: 10px;
   border: 1px solid #f2f2f2;
+  text-align: center;
+  justify-content:space-evenly
 }
 
 
@@ -43,7 +45,6 @@ a:hover {
 }
 
 #coffeeChoices, #yesOrNo {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: #ECE0D1;
@@ -72,4 +73,12 @@ a:hover {
   border: 1px solid #f2f2f2;
   width: 25%;
   margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: flex;
 }

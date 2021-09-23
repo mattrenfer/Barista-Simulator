@@ -1,16 +1,49 @@
 // Start the program & ask to make some coffee
 function startBaristaSim () {
     let para = document.getElementById("responsePara");
+    let yesOrNo = document.getElementById("yesOrNo");
+    let start = document.getElementById("start-button");
+    let reset = document.getElementById("reset-button");
+
+
+    // Prompt
     para.innerHTML = "Wanna make some coffee?";
 
-    /*if (startAnswer === "Yes" || startAnswer === "yes") {
-      para.innerHTML = "Which coffee shall we brew?";
-      coffeeSelection();
-    }
-    else {
-      para.innerHTML = "Nah? That's cool...";
-    }
-    */
+    // Show/Hide Yes or No Responses
+    yesOrNo.classList.remove("hidden");
+    yesOrNo.classList.add("shown");
+
+    // remove start button
+    start.classList.remove("shown");
+    start.classList.add("hidden");
+
+    //add reset button
+    reset.classList.remove("hidden");
+    reset.classList.add("shown");
+
+}
+
+
+// Yes
+function yes() {
+  let yesOrNo = document.getElementById("yesOrNo");
+  let choices = document.getElementById("coffeeChoices");
+  let para = document.getElementById("responsePara");
+
+  yesOrNo.classList.remove("shown");
+  yesOrNo.classList.add("hidden");
+
+  choices.classList.remove("hidden");
+  choices.classList.add("shown");
+
+  para.innerHTML = "What kind of coffee shall we make?";
+}
+
+
+// No
+function no() {
+  let para = document.getElementById("responsePara");
+  para.innerHTML = "Nah? That's cool I guess.";
 }
 
 // Coffee to Brew
@@ -23,5 +56,5 @@ function coffeeSelection() {
 // Regular Coffee
 function regular() {
   let para = document.getElementById("responsePara");
-  para.innerHTML = "Let's make some regular coffee";
+  para.innerHTML = "Great! Let's make some regular coffee";
 }

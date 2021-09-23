@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barista Simulator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <h1>Barista Simulator</h1>
 
-    <h2 id="start-button" onclick="startBaristaSim();"><a href="#">START</a></h2>
+    <h2 id="start-button" onclick="startBaristaSim();" class="shown"><a href="#">START BREWIN'</a></h2>
+    <h2 id="reset-button" onclick="location.reload();" class="hidden"><a href="#">START OVER</a></h2>
 
     <!-- Descriptive text goes here, above choices -->
     <p id="responsePara"></p>
@@ -20,13 +20,13 @@
     <div id="userResponses">
 
         <!-- Yes or No -->
-        <div id="yesOrNo">
-            <h3 class="uiButtons" onclick=""><a href="#">Yes</a></h3>
-            <h3 class="uiButtons" onclick=""><a href="#">No</a></h3>
+        <div id="yesOrNo" class="hidden">
+            <h3 class="uiButtons" onclick="yes();"><a href="#">Yes</a></h3>
+            <h3 class="uiButtons" onclick="no();"><a href="#">No</a></h3>
         </div>
         <!-- Coffee Choices -->
 
-        <div id="coffeeChoices">
+        <div id="coffeeChoices" class="hidden">
             <h3 class="uiButtons" onclick='regular();'><a href='#'>Regular</a></h3>
             <h3 class="uiButtons">Espresso</h3>
             <h3 class="uiButtons">Mocha</h3>
@@ -36,7 +36,7 @@
 
     </div>
 
-
+    <script src="script.js"></script>
 </body>
 </html>
 
