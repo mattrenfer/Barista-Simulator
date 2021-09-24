@@ -25,25 +25,25 @@ function startBaristaSim () {
 
 
 // Yes
-function yes() {
+function yesOrNo(a) {
+
   let yesOrNo = document.getElementById("yesOrNo");
   let choices = document.getElementById("coffeeChoices");
   let para = document.getElementById("responsePara");
 
-  yesOrNo.classList.remove("shown");
-  yesOrNo.classList.add("hidden");
+  if (a === "yes") {
+    yesOrNo.classList.remove("shown");
+    yesOrNo.classList.add("hidden");
+  
+    choices.classList.remove("hidden");
+    choices.classList.add("shown");
+  
+    para.innerHTML = "What kind of coffee shall we make?";
+  } else {
+    para.innerHTML = "Nah? That's cool I guess.";
+  }
 
-  choices.classList.remove("hidden");
-  choices.classList.add("shown");
 
-  para.innerHTML = "What kind of coffee shall we make?";
-}
-
-
-// No
-function no() {
-  let para = document.getElementById("responsePara");
-  para.innerHTML = "Nah? That's cool I guess.";
 }
 
 // Coffee to Brew
