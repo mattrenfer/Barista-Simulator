@@ -79,5 +79,18 @@ function coffeeChoices(a) {
 
     }, brewRate); 
   }
+
+  if (a === "espresso") {
+    para.innerHTML = "You haven't the skillz to make an espresso yet!<br /> Learn how to brew better, bro."
+  }
+
+  if (a === "mocha") {
+    para.innerHTML = "You haven't the skillz to make a mocha yet!<br /> Learn how to brew better, bro."
+  }
+
+  if (a ==="latte") {
+    para.innerHTML = "You need a LATTE more skillz to make a LATTE!<br /> Learn how to brew better, Bro (GET IT?!)"
+  }
+
 }
 
