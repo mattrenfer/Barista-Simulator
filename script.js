@@ -53,12 +53,13 @@ function coffeeChoices(a) {
   let choices = document.getElementById("coffeeChoices");
   let para = document.getElementById("responsePara");
   let countdown = document.getElementById("countdown");
-  let brewTimer = 11;
+  let brewTimer = 10;
   let brewRate = 1000;
   
   if (a === "regular") {
 
     para.innerHTML = "Brewing...";
+    countdown.innerHTML = brewTimer;
 
     choices.classList.remove("shown");
     choices.classList.add("hidden");
@@ -72,7 +73,7 @@ function coffeeChoices(a) {
         }
 
         if (brewTimer === 0) {
-          para.innerHTML = "DONE BREWING";
+          para.innerHTML = "DONE BREWING<br /><img src='img/coffee-pot.png' width='25%' height='25%' />";
           countdown.innerHTML = null;
         }
 
