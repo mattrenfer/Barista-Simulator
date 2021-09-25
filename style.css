@@ -50,6 +50,11 @@ a:hover {
   color: #ECE0D1;
 }
 
+#countdown {
+  text-align: center;
+  color: #ECE0D1;
+}
+
 #coffeeChoices, #yesOrNo {
   flex-direction: row;
   justify-content: space-between;

@@ -13,6 +13,8 @@
 
     <!-- Descriptive text goes here, above choices -->
     <p id="responsePara"></p>
+    
+    <p id="countdown"></p>
 
     <!-- User Responses go here -->
     <div id="userResponses">
@@ -22,18 +24,22 @@
             <h3 class="uiButtons" onclick="yesOrNo('yes');"><a href="#">Yes</a></h3>
             <h3 class="uiButtons" onclick="yesOrNo('no');"><a href="#">No</a></h3>
         </div>
-        <!-- Coffee Choices -->
 
+        <!-- Coffee Choices -->
         <div id="coffeeChoices" class="hidden">
-            <h3 class="uiButtons" onclick='regular();'><a href='#'>Regular</a></h3>
-            <h3 class="uiButtons">Espresso</h3>
-            <h3 class="uiButtons">Mocha</h3>
+            <h3 class="uiButtons" onclick="coffeeChoices('regular');"><a href='#'>Regular</a></h3>
+            <h3 class="uiButtons" onclick="coffeeChoices('espresso');"><a href='#'></a>Espresso</a></h3>
+            <h3 class="uiButtons" onclick="coffeeChoices('mocha');"><a href='#'></a>Mocha</a></h3>
         </div>
         
-        <!-- To Do List -->
+        <!-- To Do List --> 
+        <div id="regularBrew" class="hidden">
+            <h3 class="uiButtons" onclick="regularBrew('brew');"><a href='#'>Start the Brew</a></h3>
+            <h3 class="uiButtons" onclick="regularBrew('pour');">Pour into cup</h3>
+            <h3 class="uiButtons" onclick="regularBrew('drink');">Drink</h3>
+        </div>
 
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

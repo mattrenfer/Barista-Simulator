@@ -5,7 +5,6 @@ function startBaristaSim () {
     let start = document.getElementById("start-button");
     let reset = document.getElementById("reset-button");
 
-
     // Prompt
     para.innerHTML = "Wanna make some coffee?";
 
@@ -32,9 +31,12 @@ function yesOrNo(a) {
   let para = document.getElementById("responsePara");
 
   if (a === "yes") {
+
+    // Show/hide Yes or No buttons
     yesOrNo.classList.remove("shown");
     yesOrNo.classList.add("hidden");
   
+    // Show/Hide Coffee Type Choices
     choices.classList.remove("hidden");
     choices.classList.add("shown");
   
@@ -46,15 +48,35 @@ function yesOrNo(a) {
 
 }
 
-// Coffee to Brew
-function coffeeSelection() {
-  let choices = document.getElementById("coffeeChoices");
-  choices.innerHTML = "<h3 onclick='regular();'><a href='#'>Regular</a></h3><h3>Espresso</h3><h3>Mocha</h3>";
-}
-
-
 // Regular Coffee
-function regular() {
+function coffeeChoices(a) {
+  let choices = document.getElementById("coffeeChoices");
   let para = document.getElementById("responsePara");
-  para.innerHTML = "Great! Let's make some regular coffee";
+  let countdown = document.getElementById("countdown");
+  let brewTimer = 11;
+  let brewRate = 1000;
+  
+  if (a === "regular") {
+
+    para.innerHTML = "Brewing...";
+
+    choices.classList.remove("shown");
+    choices.classList.add("hidden");
+    
+    // Brew Countdown
+    setInterval(function() {
+        
+        if (brewTimer > 0) {
+          brewTimer--;
+          countdown.innerHTML = brewTimer;
+        }
+
+        if (brewTimer === 0) {
+          para.innerHTML = "DONE BREWING";
+          countdown.innerHTML = null;
+        }
+
+    }, brewRate); 
+  }
 }
+
