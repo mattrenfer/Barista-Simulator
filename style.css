@@ -55,7 +55,7 @@ a:hover {
   color: #ECE0D1;
 }
 
-#coffeeChoices, #yesOrNo {
+#coffeeChoices, #yesOrNo, #brewPour {
   flex-direction: row;
   justify-content: space-between;
   color: #ECE0D1;
@@ -64,16 +64,6 @@ a:hover {
   margin-top: 10px;
 }
 
-/*
-#yesOrNo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  color: #ECE0D1;
-  width: 75%;
-  margin: auto;
-}
-*/
 
 .uiButtons {
   display: flex;
@@ -83,6 +73,18 @@ a:hover {
   padding: 10px;
   border: 1px solid #f2f2f2;
   width: 20%;
+  margin: auto;
+}
+
+
+.uiButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color:#967259;
+  padding: 10px;
+  border: 1px solid #f2f2f2;
+  width: 40%;
   margin: auto;
 }
 

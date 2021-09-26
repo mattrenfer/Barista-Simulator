@@ -28,16 +28,18 @@
         <!-- Coffee Choices -->
         <div id="coffeeChoices" class="hidden">
             <h3 class="uiButtons" onclick="coffeeChoices('regular');"><a href='#'>Regular</a></h3>
-            <h3 class="uiButtons" onclick="coffeeChoices('espresso');"><a href='#'></a>Espresso</a></h3>
-            <h3 class="uiButtons" onclick="coffeeChoices('mocha');"><a href='#'></a>Mocha</a></h3>
-            <h3 class="uiButtons" onClick="coffeeChoices('latte');"><a href='#'></a>Latte</a></h3>
+            <h3 class="uiButtons" onclick="coffeeChoices('espresso');"><a href='#'>Espresso</a></h3>
+            <h3 class="uiButtons" onclick="coffeeChoices('mocha');"><a href='#'>Mocha</a></h3>
+            <h3 class="uiButtons" onclick="coffeeChoices('latte');"><a href='#'>Latte</a></h3>
         </div>
         
         <!-- To Do List --> 
-        <div id="regularBrew" class="hidden">
-            <h3 class="uiButtons" onclick="regularBrew('brew');"><a href='#'>Start the Brew</a></h3>
-            <h3 class="uiButtons" onclick="regularBrew('pour');">Pour into cup</h3>
-            <h3 class="uiButtons" onclick="regularBrew('drink');">Drink</h3>
+        <div id="brewPour" class="hidden">
+            <h3 class="uiButton" onclick="regularBrew('pour');"><a href="#">Pour into cup</a></h3>
+        </div>
+
+        <div id="brewDrink" class="hidden">
+            <h3 class="uiButton" onclick="regularBrew('drink');"><a href="#">Drink</a></h3>
         </div>
 
     </div>
