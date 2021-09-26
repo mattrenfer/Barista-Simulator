@@ -1,3 +1,5 @@
+var level = 1;
+
 // Start the program & ask to make some coffee
 function startBaristaSim () {
     let para = document.getElementById("responsePara");
@@ -53,7 +55,7 @@ function coffeeChoices(a) {
   let pour = document.getElementById("brewPour")
   let para = document.getElementById("responsePara");
   let countdown = document.getElementById("countdown");
-  let brewTimer = 2;
+  let brewTimer = 4;
   let brewRate = 1000;
   
   if (a === "regular") {
@@ -89,8 +91,10 @@ function coffeeChoices(a) {
     }, brewRate); 
   }
 
-  if (a === "espresso") {
+  if (a === "espresso" & level === 1)  {
     para.innerHTML = "You haven't the skillz to make an espresso yet!<br /> Learn how to brew better, bro."
+  } else {
+    para.innerHTML = "Let's make an espresso."
   }
 
   if (a === "mocha") {
@@ -119,6 +123,9 @@ function regularBrew(a) {
 
     para.innerHTML = "Pouring...";
     countdown.innerHTML = pourTimer;
+
+    pour.classList.remove("shown");
+    pour.classList.add("hidden");
     
     // Brew Countdown
     let pourInterval = setInterval(function() {
@@ -132,12 +139,9 @@ function regularBrew(a) {
 
         // when the brew timer ends
         if (pourTimer === 0) {
-          para.innerHTML = "DONE POURING<br /><img src='img/coffee-cup.png' width='25%' height='25%' />";
+          para.innerHTML = "DONE POURING<br /><br /><img src='img/coffee-cup.png' width='10%' height='10%' />";
           countdown.innerHTML = null;
           clearInterval(pourInterval); // stops the timer
-
-          pour.classList.remove("shown");
-          pour.classList.add("hidden");
 
           drink.classList.remove("hidden");
           drink.classList.add("shown");
@@ -147,5 +151,15 @@ function regularBrew(a) {
     }, pourRate); 
   }
 
-}
+  if (a === "drink") {
 
+    para.innerHTML = "Ahhh...nothing like a cup of joe.<br /><br />Congratulations! You are a level 2 Barista!<br /><br />You may now brew espressos."
+
+    drink.classList.remove("shown");
+    drink.classList.add("hidden");
+
+    level = 2;
+
+  }
+
+}
