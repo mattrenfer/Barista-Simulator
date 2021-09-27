@@ -65,6 +65,10 @@ a:hover {
 }
 
 
+.uiButtonsLocked {
+  opacity: 0.6;
+}
+
 .uiButtons {
   display: flex;
   flex-direction: row;

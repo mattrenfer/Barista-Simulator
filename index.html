@@ -9,7 +9,7 @@
     <h1>Barista Simulator</h1>
 
     <h2 id="start-button" onclick="startBaristaSim();" class="shown"><a href="#">START BREWIN'</a></h2>
-    <h2 id="reset-button" onclick="startBaristaSim();" class="hidden"><a href="#">START OVER</a></h2>
+    <h2 id="reset-button" onclick="location.reload();" class="hidden"><a href="#">START OVER</a></h2>
 
     <!-- Descriptive text goes here, above choices -->
     <p id="responsePara"></p>
@@ -27,10 +27,10 @@
 
         <!-- Coffee Choices -->
         <div id="coffeeChoices" class="hidden">
-            <h3 class="uiButtons" onclick="coffeeChoices('regular');"><a href='#'>Regular</a></h3>
-            <h3 class="uiButtons" onclick="coffeeChoices('espresso');"><a href='#'>Espresso</a></h3>
-            <h3 class="uiButtons" onclick="coffeeChoices('mocha');"><a href='#'>Mocha</a></h3>
-            <h3 class="uiButtons" onclick="coffeeChoices('latte');"><a href='#'>Latte</a></h3>
+            <h3 id="regular" class="uiButtons" onclick="coffeeChoices('regular');"><a href='#'>Regular</a></h3>
+            <h3 id="espresso" class="uiButtons uiButtonsLocked" onclick="coffeeChoices('espresso');"><a href='#'>Espresso</a></h3>
+            <h3 class="uiButtons uiButtonsLocked" onclick="coffeeChoices('mocha');"><a href='#'>Mocha</a></h3>
+            <h3 class="uiButtons uiButtonsLocked" onclick="coffeeChoices('latte');"><a href='#'>Latte</a></h3>
         </div>
         
         <!-- To Do List --> 

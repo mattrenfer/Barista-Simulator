@@ -1,5 +1,13 @@
 var level = 1;
 
+// clears everything
+function reset () {
+  let para = document.getElementById("responsePara");
+
+  para.innerHTML = null;
+
+}
+
 // Start the program & ask to make some coffee
 function startBaristaSim () {
     let para = document.getElementById("responsePara");
@@ -55,7 +63,7 @@ function coffeeChoices(a) {
   let pour = document.getElementById("brewPour")
   let para = document.getElementById("responsePara");
   let countdown = document.getElementById("countdown");
-  let brewTimer = 4;
+  let brewTimer = 10;
   let brewRate = 1000;
   
   if (a === "regular") {
@@ -93,8 +101,10 @@ function coffeeChoices(a) {
 
   if (a === "espresso" & level === 1)  {
     para.innerHTML = "You haven't the skillz to make an espresso yet!<br /> Learn how to brew better, bro."
-  } else {
-    para.innerHTML = "Let's make an espresso."
+  } 
+  
+  if (a === "espresso" & level > 1) {
+    para.innerHTML = "You've gotten better, Barista. Let's make an espresso. <br /><br />Except...well. That's the end of our Barista journey so far. <br /><br />To be continued...!"
   }
 
   if (a === "mocha") {
@@ -113,7 +123,10 @@ function regularBrew(a) {
   let drink = document.getElementById("brewDrink");
   let para = document.getElementById("responsePara");
   let countdown = document.getElementById("countdown");
-  let pourTimer = 2;
+  let espresso = document.getElementById("espresso");
+  let start = document.getElementById("start-button");
+  let reset = document.getElementById("reset-button");
+  let pourTimer = 3;
   let pourRate = 1000;
   
   if (a === "pour") {
@@ -158,7 +171,16 @@ function regularBrew(a) {
     drink.classList.remove("shown");
     drink.classList.add("hidden");
 
+    espresso.classList.remove("uiButtonsLocked");
+
     level = 2;
+
+    // add back the start button
+    start.classList.remove("hidden");
+    start.classList.add("shown");
+
+    reset.classList.remove("shown");
+    reset.classList.add("hidden");
 
   }
 
