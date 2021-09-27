@@ -41,7 +41,8 @@ a:hover {
   padding: 10px;
   border: 1px solid #f2f2f2;
   text-align: center;
-  justify-content:space-evenly
+  justify-content:space-evenly;
+  margin-bottom: 100px
 }
 
 
@@ -55,8 +56,17 @@ a:hover {
   color: #ECE0D1;
 }
 
-#coffeeChoices, #yesOrNo, #brewPour {
+#yesOrNo, #brewPour {
   flex-direction: row;
+  justify-content: space-between;
+  color: #ECE0D1;
+  width: 75%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#coffeeChoices {
+  flex-direction: column;
   justify-content: space-between;
   color: #ECE0D1;
   width: 75%;
