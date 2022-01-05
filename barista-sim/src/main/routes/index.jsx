@@ -4,8 +4,8 @@ import { Redirect, Route, withRouter, Switch, useLocation } from 'react-router-d
 
 import PrivateRoute from './PrivateRoute';
 
-const Home = lazy(() => import('modules/Home'));
-const Dashboard = lazy(() => import('modules/Dashboard'));
+const Home = lazy(() => import('pages/Home'));
+const Dashboard = lazy(() => import('pages/Dashboard'));
 
 const Routes = ({ isLoggedIn }) => {
   const location = useLocation();
