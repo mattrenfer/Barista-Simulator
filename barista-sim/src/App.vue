@@ -1,28 +1,136 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/imgs/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Main />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue';
+import Main from '@/components/Main.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Main
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+body {
+  background-color: #37251B;
+  background-image:url(assets/imgs/beans-after-1.png);
+  background-size: auto;
+  background-repeat: repeat-y;
+  background-position-x: right;
+  color: #f2f2f2;
+  font-size: 20px;
+  font-family: monospace;
+}
+
+h1 {
+  text-align:center;
+  color: #D2C1B0;
+  padding-bottom: 50px;
+  text-shadow: 3px 3px 1px #000;
+}
+
+h2 {
+  text-align:center;
+  color: #ECE0D1;
+}
+
+p {
+  color: #ECE0D1;
+}
+
+a, a:visited, a:active {
+  color: #ECE0D1;
+  text-decoration: none;
+}
+
+
+a:hover {
+  color: #f2f2f2;
+}
+
+
+
+#start-button, #reset-button { 
+  background-color:#967259;
+  padding: 10px;
+  border: 1px solid #f2f2f2;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  justify-content:space-evenly;
+  margin-bottom: 100px
+}
+
+
+#responsePara {
+  text-align:center;
+  color: #ECE0D1;
+}
+
+#countdown {
+  text-align: center;
+  color: #ECE0D1;
+}
+
+#yesOrNo, #brewPour {
+  flex-direction: row;
+  justify-content: space-between;
+  color: #ECE0D1;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#coffeeChoices {
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ECE0D1;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+
+.uiButtonsLocked {
+  opacity: 0.6;
+}
+
+.uiButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color:#967259;
+  padding: 15px;
+  border: 1px solid #f2f2f2;
+  width: 20%;
+  margin: auto;
+}
+
+
+.uiButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color:#967259;
+  padding: 15px;
+  border: 1px solid #f2f2f2;
+  width: 40%;
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: flex;
 }
 </style>
