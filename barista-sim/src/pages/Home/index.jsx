@@ -4,7 +4,7 @@ class Home extends PureComponent {
   render() {
     return (
       <>
-        <h1>Home</h1>
+        <h1>Barista Simulator</h1>
       </>
     );
   }
