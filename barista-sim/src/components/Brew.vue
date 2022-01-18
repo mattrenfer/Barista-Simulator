@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'Brew',
+  name: 'BrewChoice',
   data() {
     return {
       makeCoffee: true,
@@ -49,17 +49,17 @@ export default {
         {
           id: 2,
           name: "Espresso",
-          locked: true,
+          locked: true,  // booleans for now, but will eventually be a required level that checks against the current level
         },
         {
           id: 3,
           name: "Mocha",
-          locked: true,
+          locked: true, // booleans for now, but will eventually be a required level that checks against the current level
         },
         {
           id: 4,
           name: "Latte",
-          locked: true,
+          locked: true, // booleans for now, but will eventually be a required level that checks against the current level
         },
       ]
     }
@@ -75,7 +75,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
 
 </style>

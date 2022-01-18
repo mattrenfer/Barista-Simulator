@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <Main />
-    <Brew />
+    <Header />
+    <BrewChoice />
   </div>
 </template>
 
 <script>
-import Main from '@/components/Main.vue';
-import Brew from '@/components/Brew.vue';
+import Header from '@/components/Header.vue';
+import BrewChoice from '@/components/BrewChoice.vue';
 
 export default {
   name: 'App',
   components: {
-    Main,
-    Brew
+    Header,
+    BrewChoice
   }
 }
 </script>

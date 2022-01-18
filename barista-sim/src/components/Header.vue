@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Main',
+  name: 'Header',
   props: {
     msg: String
   },
@@ -21,7 +21,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
 
 </style>
