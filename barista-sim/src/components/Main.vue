@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
+  <div class="header">
     <h1>Barista Simulator</h1>
+    <h3>Level: {{level}}</h3>
   </div>
 </template>
 
@@ -9,7 +10,12 @@ export default {
   name: 'Main',
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      level: 1
+    }
+  },
 }
 </script>
 

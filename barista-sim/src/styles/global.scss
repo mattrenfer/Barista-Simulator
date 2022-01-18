@@ -20,6 +20,10 @@ body {
     text-align:center;
     color: #ECE0D1;
   }
+
+  h3 {
+    text-align:center;
+  }
   
   p {
     color: #ECE0D1;
@@ -36,7 +40,7 @@ body {
   }
   
   
-  #start-button, #reset-button { 
+  .starting-buttons { 
     background-color:#967259;
     padding: 10px;
     border: 1px solid #f2f2f2;
@@ -46,17 +50,18 @@ body {
   }
   
   
-  #responsePara {
+  .descriptiveText {
     text-align:center;
     color: #ECE0D1;
   }
   
-  #countdown {
+  .countdown {
     text-align: center;
     color: #ECE0D1;
   }
   
-  #yesOrNo, #brewPour {
+  .selection{
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     color: #ECE0D1;
@@ -65,21 +70,21 @@ body {
     margin-top: 10px;
   }
   
-  #coffeeChoices {
+  .verticalButtons {
     flex-direction: column;
     justify-content: space-between;
     color: #ECE0D1;
     width: 100%;
     margin: auto;
     margin-top: 10px;
+    .locked {
+      opacity: 0.6;
+    }
   }
   
   
-  .uiButtonsLocked {
-    opacity: 0.6;
-  }
-  
-  .uiButtons {
+  button {
+    color: $coffee-light;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -88,19 +93,9 @@ body {
     border: 1px solid #f2f2f2;
     width: 20%;
     margin: auto;
+    cursor: pointer;
   }
   
-  
-  .uiButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color:#967259;
-    padding: 15px;
-    border: 1px solid #f2f2f2;
-    width: 40%;
-    margin: auto;
-  }
   
   .hidden {
     display: none;
