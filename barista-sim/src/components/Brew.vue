@@ -21,11 +21,8 @@
       <p>What kind of coffee shall we make?</p>
     </div>
 
-    <div class="verticalButtons">
-      <button><a href='#'>Regular</a></button>
-      <button class="locked"><a href='#'>Espresso</a></button>
-      <button class="locked"><a href='#'>Mocha</a></button>
-      <button class="locked"><a href='#'>Latte</a></button>
+    <div v-for="coffee in coffees" :key="coffee.id" class="verticalButtons">
+      <button :class="{locked: coffee.locked}">{{ coffee.name }}</button>
     </div>
 
   </div>
@@ -40,6 +37,29 @@ export default {
     return {
       makeCoffee: true,
       brewTypes: false,
+      unskilled: false,
+      coffees: [
+        {
+          id: 1,
+          name: "Regular",
+          locked: false
+        },
+        {
+          id: 2,
+          name: "Espresso",
+          locked: true,
+        },
+        {
+          id: 3,
+          name: "Mocha",
+          locked: true,
+        },
+        {
+          id: 4,
+          name: "Latte",
+          locked: true,
+        },
+      ]
     }
   },
 }
