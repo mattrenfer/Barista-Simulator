@@ -25,7 +25,7 @@
   <div v-show="brewCoffee && !drinkCoffee">
     <div class="descriptiveText">
       <p>Brewing . . .</p>
-      <img src="@/assets/imgs/coffee-pot.png" width='50%' height='50%' />
+      <img src="@/assets/imgs/coffee-pot.png" width='30%' height='30%' />
     </div>
     <div class="selection">
       <button class="uiButtons" @click="drinkCoffee = true">Pour coffee!</button>
@@ -36,7 +36,7 @@
     <div class="descriptiveText">
       <p v-if="drankCoffee">Congratulations! You are a level 2 Barista!</p>
       <p v-else>Brewing . . .</p>
-      <img src="@/assets/imgs/coffee-cup.png" width='25%' height='25%' />
+      <img src="@/assets/imgs/coffee-cup.png" width='15%' height='15%' />
     </div>
     <div class="selection">
       <button class="uiButtons" @click="drankCoffee = true">Drink coffee!</button>
