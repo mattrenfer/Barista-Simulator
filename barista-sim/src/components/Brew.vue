@@ -18,11 +18,12 @@
   <div v-show="brewTypes">
 
     <div class="descriptiveText">
-      <p>What kind of coffee shall we make?</p>
+      <p v-if="!skillLock">What kind of coffee shall we make?</p>
+      <p v-else>You haven't the skillz to make a {{ selectedCoffee }} yet!<br /> Learn how to brew better, bro.</p>
     </div>
 
     <div v-for="coffee in coffees" :key="coffee.id" class="verticalButtons">
-      <button :class="{locked: coffee.locked}">{{ coffee.name }}</button>
+      <button @click="setSelectedCoffee(coffee.name, coffee.locked)" :class="{locked: coffee.locked}">{{ coffee.name }}</button>
     </div>
 
   </div>
@@ -37,12 +38,13 @@ export default {
     return {
       makeCoffee: true,
       brewTypes: false,
-      unskilled: false,
+      skillLock: false,
+      selectedCoffee: '',
       coffees: [
         {
           id: 1,
           name: "Regular",
-          locked: false
+          locked: false,
         },
         {
           id: 2,
@@ -62,6 +64,12 @@ export default {
       ]
     }
   },
+  methods: {
+    setSelectedCoffee (name, locked) {
+      locked ? this.skillLock = true : this.skillLock = false;
+      this.selectedCoffee = name;
+    }
+  }
 }
 </script>
 
