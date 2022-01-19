@@ -22,25 +22,8 @@
     </div>
   </div>
 
-  <div v-show="brewCoffee && !drinkCoffee">
-    <div class="descriptiveText">
-      <p>Brewing . . .</p>
-      <img src="@/assets/imgs/coffee-pot.png" width='30%' height='30%' />
-    </div>
-    <div class="selection">
-      <button class="uiButtons" @click="drinkCoffee = true">Pour coffee!</button>
-    </div>
-  </div>
-
-  <div v-show="drinkCoffee">
-    <div class="descriptiveText">
-      <p v-if="drankCoffee">Congratulations! You are a level 2 Barista!</p>
-      <p v-else>Brewing . . .</p>
-      <img src="@/assets/imgs/coffee-cup.png" width='15%' height='15%' />
-    </div>
-    <div class="selection">
-      <button class="uiButtons" @click="drankCoffee = true">Drink coffee!</button>
-    </div>
+  <div v-show="brewCoffee">
+    <Brew />
   </div>
 
 </div>
@@ -48,16 +31,19 @@
 
 <script>
 
+import Brew from '@/components/Brew.vue';
+
 export default {
   name: 'BrewChoice',
+  components: {
+    Brew
+  },
   data() {
     return {
       currentLevel: 1, // hardcoded current level until global state is available
       makeCoffee: true, // pagination
       showBrewTypes: false,
-      brewCoffee: false,
-      drinkCoffee: false,
-      drankCoffee: false, // pagination end
+      brewCoffee: false, // pagination end
       skillLock: false,  // if set to true, will not continue on selection and display dialogue instead
       selectedCoffee: '',
       coffees: [
