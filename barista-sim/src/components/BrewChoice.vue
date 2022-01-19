@@ -33,6 +33,29 @@
 
 import Brew from '@/components/Brew.vue';
 
+const coffeeData = [
+  {
+    id: 1,
+    name: "Regular",
+    reqLevel: 1, // check against the current level
+  },
+  {
+    id: 2,
+    name: "Espresso",
+    reqLevel: 2,  // check against the current level
+  },
+  {
+    id: 3,
+    name: "Mocha",
+    reqLevel: 5, // check against the current level
+  },
+  {
+    id: 4,
+    name: "Latte",
+    reqLevel: 10, // check against the current level
+  },
+];
+
 export default {
   name: 'BrewChoice',
   components: {
@@ -41,33 +64,12 @@ export default {
   data() {
     return {
       currentLevel: 1, // hardcoded current level until global state is available
+      coffees: coffeeData,
+      selectedCoffee: '',
+      skillLock: false,  // if set to true, will not continue on coffee selection and display dialogue instead
       makeCoffee: true, // pagination
       showBrewTypes: false,
       brewCoffee: false, // pagination end
-      skillLock: false,  // if set to true, will not continue on selection and display dialogue instead
-      selectedCoffee: '',
-      coffees: [
-        {
-          id: 1,
-          name: "Regular",
-          reqLevel: 1, // check against the current level
-        },
-        {
-          id: 2,
-          name: "Espresso",
-          reqLevel: 2,  // check against the current level
-        },
-        {
-          id: 3,
-          name: "Mocha",
-          reqLevel: 5, // check against the current level
-        },
-        {
-          id: 4,
-          name: "Latte",
-          reqLevel: 10, // check against the current level
-        },
-      ]
     }
   },
   methods: {
