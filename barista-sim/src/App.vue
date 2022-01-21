@@ -1,23 +1,40 @@
 <template>
+<transition name="fadeIn" appear>
   <div id="app">
+    
     <Header />
     <BrewChoice />
+    
   </div>
+  </transition>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import BrewChoice from '@/components/BrewChoice.vue';
+
+import Header from "@/components/Header.vue";
+import BrewChoice from "@/components/BrewChoice.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
+
     Header,
-    BrewChoice
-  }
-}
+    BrewChoice,
+
+  },
+};
 </script>
 
 <style lang="scss">
+
 @import "@/styles/index.scss";
+
+.fadeIn-enter-active,
+.pot-leave-active {
+  transition: opacity 2.5s;
+}
+.fadeIn-enter, .pot-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

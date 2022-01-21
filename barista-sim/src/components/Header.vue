@@ -1,25 +1,23 @@
 <template>
   <div class="header">
     <h1>Barista Simulator</h1>
-    <h3>Level: {{level}}</h3>
+    <h3>Level: {{ level }}</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: "Header",
   props: {
-    msg: String
+    msg: String,
   },
   data() {
     return {
-      level: 1
-    }
+      level: 1,
+    };
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>
