@@ -20,8 +20,11 @@
         <p v-if="showDrankCoffee">
           Congratulations! You are a level 2 Barista!
         </p>
-        <p v-else>
+        <p v-if="!drinkDone">
           Pouring . . .<Countdown :countAmount="3" v-on:isTimerDone="drinkDone = $event" />
+        </p>
+        <p v-else>
+          DONE POURING
         </p>
         <img src="@/assets/imgs/coffee-cup.png" width="15%" height="15%" />
       </div>
