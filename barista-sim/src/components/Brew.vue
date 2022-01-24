@@ -3,13 +3,12 @@
     <div v-show="!showDrinkCoffee">
       <div class="descriptiveText">
         <p>
-          Brewing . . .
-          <span class="base-timer__label">{{ timeLeftBrew }}</span>
+          Brewing . . .<Countdown :countAmount="5" v-on:isTimerDone="brewDone = $event" />
         </p>
         <img src="@/assets/imgs/coffee-pot.png" width="30%" height="30%" />
       </div>
       <div class="selection" v-show="brewDone">
-        <button class="uiButtons" @click="drinkCoffee()">Pour coffee!</button>
+        <button class="uiButtons" @click="showDrinkCoffee = true">Pour coffee!</button>
       </div>
     </div>
 
@@ -20,7 +19,7 @@
         </p>
         <p v-else>
           Brewing . . .
-          <span class="base-timer__label">{{ timeLeftDrink }}</span>
+          <span><Countdown :countAmount="3" v-on:isTimerDone="drinkDone = $event" /></span>
         </p>
         <img src="@/assets/imgs/coffee-cup.png" width="15%" height="15%" />
       </div>
@@ -35,11 +34,13 @@
 
 <script>
 
-const BREW_TIME_LIMIT = 5;
-const DRINK_TIME_LIMIT = 3;
+import Countdown from '@/components/Countdown.vue';
 
 export default {
   name: "Brew",
+  components: {
+    Countdown,
+  },
   props: {
     timeToBrewCoffee: {
       type: Boolean,
@@ -52,66 +53,9 @@ export default {
       showDrankCoffee: false,
       brewDone: false,
       drinkDone: false,
-      timePassedBrew: 0,
-      timePassedDrink: 0,
-      timerIntervalBrew: null,
-      timerIntervalDrink: null,
     };
   },
-
-  computed: {
-    // formattedTimeLeft() {
-    //   const timeLeft = this.timeLeft;
-    //   return timeLeft;
-    // },
-
-    timeLeftBrew() {
-      return BREW_TIME_LIMIT - this.timePassedBrew;
-    },
-
-    timeLeftDrink() {
-      return DRINK_TIME_LIMIT - this.timePassedDrink;
-    },
-  },
-
-  watch: {
-    timeLeftBrew(newValue) {
-      if (newValue === 0) {
-        this.onTimesUpBrew();
-      }
-    },
-    timeLeftDrink(newValue) {
-      if (newValue === 0) {
-        this.onTimesUpDrink();
-      }
-    },
-  },
-
-  mounted() {
-    this.startBrewTimer();
-  },
-
-  methods: {
-    onTimesUpBrew() {
-      clearInterval(this.timerIntervalBrew);
-      this.brewDone = true;
-    },
-    onTimesUpDrink() {
-      clearInterval(this.timerIntervalDrink);
-      this.drinkDone = true;
-    },
-    startBrewTimer() {
-      this.timerIntervalBrew = setInterval(() => (this.timePassedBrew += 1), 1000);
-    },
-    startDrinkTimer() {
-      this.timerIntervalDrink = setInterval(() => (this.timePassedDrink += 1), 1000);
-    },
-    drinkCoffee(){
-    this.startDrinkTimer();
-    this.showDrinkCoffee = true;
-    },
-  },
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
