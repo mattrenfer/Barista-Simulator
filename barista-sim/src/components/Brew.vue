@@ -9,15 +9,15 @@
         <img src="@/assets/imgs/coffee-pot.png" width="30%" height="30%" />
       </div>
       <div class="selection" v-show="brewDone">
-        <button class="uiButtons" @click="drinkCoffee()">
-          Pour coffee!
-        </button>
+        <button class="uiButtons" @click="drinkCoffee()">Pour coffee!</button>
       </div>
     </div>
 
     <div v-show="showDrinkCoffee">
       <div class="descriptiveText">
-        <p v-if="showDrankCoffee">Congratulations! You are a level 2 Barista!</p>
+        <p v-if="showDrankCoffee">
+          Congratulations! You are a level 2 Barista!
+        </p>
         <p v-else>
           Brewing . . .
           <span class="base-timer__label">{{ timeLeftDrink }}</span>
@@ -36,17 +36,22 @@
 <script>
 
 const BREW_TIME_LIMIT = 5;
-const DRINK_TIME_LIMIT = 5;
+const DRINK_TIME_LIMIT = 3;
 
 export default {
   name: "Brew",
+  props: {
+    timeToBrewCoffee: {
+      type: Boolean,
+      default: () => false,
+    }
+  },
   data() {
     return {
       showDrinkCoffee: false,
       showDrankCoffee: false,
       brewDone: false,
       drinkDone: false,
-
       timePassedBrew: 0,
       timePassedDrink: 0,
       timerIntervalBrew: null,
@@ -63,7 +68,7 @@ export default {
     timeLeftBrew() {
       return BREW_TIME_LIMIT - this.timePassedBrew;
     },
-    
+
     timeLeftDrink() {
       return DRINK_TIME_LIMIT - this.timePassedDrink;
     },

@@ -23,7 +23,7 @@
   </div>
 
   <div v-show="brewCoffee">
-    <Brew />
+    <Brew :timeToBrewCoffee="brewCoffee" />
   </div>
 
 </div>
