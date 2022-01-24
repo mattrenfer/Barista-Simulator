@@ -2,8 +2,11 @@
   <div class="brew">
     <div v-show="!showDrinkCoffee">
       <div class="descriptiveText">
-        <p>
+        <p v-if="!brewDone">
           Brewing . . .<Countdown :countAmount="5" v-on:isTimerDone="brewDone = $event" />
+        </p>
+        <p v-else>
+          DONE BREWING
         </p>
         <img src="@/assets/imgs/coffee-pot.png" width="30%" height="30%" />
       </div>
@@ -12,14 +15,13 @@
       </div>
     </div>
 
-    <div v-show="showDrinkCoffee">
+    <div v-if="showDrinkCoffee">
       <div class="descriptiveText">
         <p v-if="showDrankCoffee">
           Congratulations! You are a level 2 Barista!
         </p>
         <p v-else>
-          Brewing . . .
-          <span><Countdown :countAmount="3" v-on:isTimerDone="drinkDone = $event" /></span>
+          Pouring . . .<Countdown :countAmount="3" v-on:isTimerDone="drinkDone = $event" />
         </p>
         <img src="@/assets/imgs/coffee-cup.png" width="15%" height="15%" />
       </div>

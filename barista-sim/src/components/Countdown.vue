@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <span>{{ count }}</span>
-  </div>
+    <span>
+     {{ count }}
+    </span>
 </template>
 
 <script>
@@ -18,7 +18,6 @@ export default {
     return {
       count: this.countAmount,
       timer: null,
-      timerDone: false,
     };
   },
 
@@ -29,7 +28,7 @@ export default {
   methods: {
     startTimer() {
       this.timer = setInterval(
-        () => (this.count > 0 ? (this.count -= 1) : this.clearTimer()),
+        () => (this.count > 1 ? (this.count -= 1) : this.clearTimer()),
         1000
       );
     },
