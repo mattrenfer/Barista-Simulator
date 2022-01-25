@@ -33,6 +33,11 @@
           Drink coffee!
         </button>
       </div>
+      <div class="selection" v-show="showDrankCoffee">
+        <button class="uiButtons" @click="resetIt()">
+          Let's brew some more!
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +63,9 @@ export default {
     levelUp() {
       this.showDrankCoffee = true;
       this.$emit('levelUp', 2);
+    },
+    resetIt() {
+      this.$emit('resetIt', false);
     }
   },
 }
