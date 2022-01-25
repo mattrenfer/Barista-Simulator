@@ -23,7 +23,7 @@
   </div>
 
   <div v-if="brewCoffee">
-    <Brew :timeToBrewCoffee="brewCoffee" />
+    <Brew v-on:levelUp="currentLevel = $event" />
   </div>
 
 </div>
@@ -82,8 +82,14 @@ export default {
         this.skillLock = false;
         this.brewCoffee = true;
       }
+    },
+  },
+
+  watch: {
+    currentLevel(newValue) {
+      this.$emit('levelUp', newValue);
     }
-  }
+  },
 }
 </script>
 

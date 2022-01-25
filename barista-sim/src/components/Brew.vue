@@ -29,7 +29,7 @@
         <img src="@/assets/imgs/coffee-cup.png" width="15%" height="15%" />
       </div>
       <div class="selection" v-show="drinkDone">
-        <button class="uiButtons" @click="showDrankCoffee = true">
+        <button class="uiButtons" @click="levelUp()">
           Drink coffee!
         </button>
       </div>
@@ -46,12 +46,6 @@ export default {
   components: {
     Countdown,
   },
-  props: {
-    timeToBrewCoffee: {
-      type: Boolean,
-      default: () => false,
-    }
-  },
   data() {
     return {
       showDrinkCoffee: false,
@@ -59,6 +53,12 @@ export default {
       brewDone: false,
       drinkDone: false,
     };
+  },
+  methods: {
+    levelUp() {
+      this.showDrankCoffee = true;
+      this.$emit('levelUp', 2);
+    }
   },
 }
 </script>

@@ -2,8 +2,8 @@
 <transition name="fadeIn" appear>
   <div id="app">
     
-    <Header />
-    <BrewChoice />
+    <Header :currentLevel="currentLevel" />
+    <BrewChoice v-on:levelUp="currentLevel = $event"/>
     
   </div>
   </transition>
@@ -21,6 +21,11 @@ export default {
     Header,
     BrewChoice,
 
+  },
+  data() {
+    return {
+      currentLevel: 1
+    }
   },
 };
 </script>

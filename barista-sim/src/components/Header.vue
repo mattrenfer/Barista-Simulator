@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <h1>Barista Simulator</h1>
-    <h3>Level: {{ level }}</h3>
+    <h3>Level: {{ currentLevel }}</h3>
   </div>
 </template>
 
@@ -10,11 +10,7 @@ export default {
   name: "Header",
   props: {
     msg: String,
-  },
-  data() {
-    return {
-      level: 1,
-    };
+    currentLevel: Number
   },
 };
 </script>
