@@ -23,7 +23,7 @@
   </div>
 
   <div v-if="brewCoffee">
-    <Brew v-on:levelUp="currentLevel = $event" v-on:resetIt="brewCoffee = $event" />
+    <Brew v-on:levelUp="currentLevel = $event" v-on:resetIt="brewCoffee = $event" :currentLevel="currentLevel"/>
   </div>
 
 </div>

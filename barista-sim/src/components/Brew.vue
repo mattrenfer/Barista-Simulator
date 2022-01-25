@@ -18,7 +18,7 @@
     <div v-if="showDrinkCoffee">
       <div class="descriptiveText">
         <p v-if="showDrankCoffee">
-          Congratulations! You are a level 2 Barista!
+          Congratulations! You are a level {{ currentLevel }} Barista!
         </p>
         <p v-if="!drinkDone">
           Pouring . . .<Countdown :countAmount="3" v-on:isTimerDone="drinkDone = $event" />
@@ -51,6 +51,11 @@ export default {
   components: {
     Countdown,
   },
+  props: {
+    currentLevel: {
+      type: Number,
+    },
+  },
   data() {
     return {
       showDrinkCoffee: false,
@@ -62,7 +67,7 @@ export default {
   methods: {
     levelUp() {
       this.showDrankCoffee = true;
-      this.$emit('levelUp', 2);
+      this.$emit('levelUp', this.currentLevel += 1);
     },
     resetIt() {
       this.$emit('resetIt', false);
