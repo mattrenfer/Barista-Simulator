@@ -9,8 +9,7 @@
 export default {
   name: "Header",
   props: {
-    msg: String,
-    currentLevel: Number
+    currentLevel: Number,
   },
 };
 </script>
