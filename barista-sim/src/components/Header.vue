@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <h1>Barista Simulator</h1>
-    <h3>Level: {{ currentLevel }}</h3>
+    <h3 class="title">Barista Simulator</h3>
+    <h3 class="level">Level: {{ currentLevel }}</h3>
   </div>
 </template>
 
@@ -14,11 +14,14 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
+
 <style scoped>
 
-.header {
-  margin-bottom: 50px;
-}
+.header { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start;}
+
+.title { align-self: flex-start; }
+.level { align-self: flex-end; }
+
 
 </style>
