@@ -59,6 +59,7 @@ export default {
   },
   data() {
     return {
+      level: this.currentLevel,  // since we can't update props directly, make currentLevel a variable called level that we update later and pass up to the parent
       showDrinkCoffee: false,
       showDrankCoffee: false,
       brewDone: false, // essentially pagination hide/shows that trigger to true when the timer is finished via the timerIsDone emit trigger (in Countdown.vue)
@@ -74,7 +75,7 @@ export default {
     },
     levelUp() {
       this.showDrankCoffee = true;
-      this.$emit("levelUp", (this.currentLevel += 1)); // send up the currentLevel + 1 to the parent (BrewChoice.vue)
+      this.$emit("levelUp", (this.level += 1)); // send up the currentLevel + 1 to the parent (BrewChoice.vue)
     },
     resetIt() {
       this.$emit("resetIt", false);
