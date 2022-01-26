@@ -45,10 +45,10 @@
 </template>
 
 <script>
-import Countdown from "@/components/Countdown.vue";
+import Countdown from "@/components/countdown.vue";
 
 export default {
-  name: "Brew",
+  name: "BrewTimers",
   components: {
     Countdown,
   },

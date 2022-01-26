@@ -30,7 +30,7 @@
     </div>
 
     <div v-if="brewCoffee">
-      <Brew
+      <BrewTimers
         @levelUp="currentLevel = $event"
         @resetIt="brewCoffee = $event"
         :currentLevel="currentLevel"
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Brew from "@/components/Brew.vue";
+import BrewTimers from "@/components/brew-timers.vue";
 
 const coffeeData = [
   {
@@ -66,9 +66,9 @@ const coffeeData = [
 ];
 
 export default {
-  name: "BrewChoice",
+  name: "Brew",
   components: {
-    Brew,
+    BrewTimers,
   },
   data() {
     return {

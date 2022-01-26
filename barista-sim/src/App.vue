@@ -2,19 +2,50 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/brew">Brew</router-link> |
+      <router-link to="/clock-in">Clock In</router-link>
     </div>
-    <router-view/>
+    
+    <transition name="fadeIn" appear>
+      <Header :currentLevel="currentLevel" />
+    </transition>
+     <transition name="fadeIn" appear>
+       <router-view />
+    </transition>
   </div>
 </template>
 
+<script>
+import Header from "@/components/header.vue";
+
+export default {
+  name: "App",
+  components: {
+    Header,
+  },
+  data() {
+    return {
+      currentLevel: 1,
+    };
+  },
+};
+</script>
+
 <style lang="scss">
+@import "@/styles/index.scss";
+
+.fadeIn-enter-active,
+.pot-leave-active {
+  transition: opacity 2.5s;
+}
+.fadeIn-enter, .pot-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+
+/* Router STyles */
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
@@ -22,10 +53,9 @@
 
   a {
     font-weight: bold;
-    color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #f2f2f2;
     }
   }
 }
