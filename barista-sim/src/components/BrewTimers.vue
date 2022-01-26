@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import Countdown from "@/components/countdown.vue";
+import Countdown from "@/components/Countdown.vue";
 
 export default {
   name: "BrewTimers",

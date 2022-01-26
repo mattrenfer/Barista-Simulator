@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import BrewTimers from "@/components/brew-timers.vue";
+import BrewTimers from "@/components/BrewTimers.vue";
 
 const coffeeData = [
   {
