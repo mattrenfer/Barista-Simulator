@@ -31,8 +31,8 @@
 
     <div v-if="brewCoffee">
       <Brew
-        v-on:levelUp="currentLevel = $event"
-        v-on:resetIt="brewCoffee = $event"
+        @levelUp="currentLevel = $event"
+        @resetIt="brewCoffee = $event"
         :currentLevel="currentLevel"
       />
     </div>

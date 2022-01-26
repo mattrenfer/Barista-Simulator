@@ -2,7 +2,7 @@
   <transition name="fadeIn" appear>
     <div id="app">
       <Header :currentLevel="currentLevel" />
-      <BrewChoice v-on:levelUp="currentLevel = $event" />
+      <BrewChoice @levelUp="currentLevel = $event" />
     </div>
   </transition>
 </template>

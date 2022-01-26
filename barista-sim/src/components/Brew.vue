@@ -5,7 +5,7 @@
         <p v-if="!brewDone">
           Brewing . . .<Countdown
             :countAmount="5"
-            v-on:isTimerDone="brewDone = $event"
+            @isTimerDone="isBrewDone"
           />
         </p>
         <p v-else>DONE BREWING</p>
@@ -26,7 +26,7 @@
         <p v-if="!drinkDone">
           Pouring . . .<Countdown
             :countAmount="3"
-            v-on:isTimerDone="drinkDone = $event"
+            @isTimerDone="isDrinkDone"
           />
         </p>
         <p v-else>DONE POURING</p>
@@ -66,6 +66,12 @@ export default {
     };
   },
   methods: {
+    isBrewDone(timerDone) {
+      this.brewDone = timerDone;
+    },
+    isDrinkDone(timerDone) {
+      this.drinkDone = timerDone;
+    },
     levelUp() {
       this.showDrankCoffee = true;
       this.$emit("levelUp", (this.currentLevel += 1)); // send up the currentLevel + 1 to the parent (BrewChoice.vue)
