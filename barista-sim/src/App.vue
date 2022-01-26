@@ -9,9 +9,7 @@
     <transition name="fadeIn" appear>
       <Header :currentLevel="currentLevel" />
     </transition>
-     <transition name="fadeIn" appear>
        <router-view />
-    </transition>
   </div>
 </template>
 
