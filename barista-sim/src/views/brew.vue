@@ -22,7 +22,7 @@
       <div v-for="coffee in coffees" :key="coffee.id" class="verticalButtons">
         <button
           @click="setSelectedCoffee(coffee.name, coffee.reqLevel)"
-          :class="{ locked: coffee.reqLevel > currentLevel }"
+          :class="{ locked: coffee.reqLevel > level }"
         >
           {{ coffee.name }}
         </button>
@@ -30,11 +30,7 @@
     </div>
 
     <div v-if="brewCoffee">
-      <BrewTimers
-        @levelUp="currentLevel = $event"
-        @resetIt="brewCoffee = $event"
-        :currentLevel="currentLevel"
-      />
+      <BrewTimers @resetIt="brewCoffee = $event" />
     </div>
   </div>
 </template>
@@ -72,7 +68,6 @@ export default {
   },
   data() {
     return {
-      currentLevel: 1, // hardcoded current level until global state is available
       coffees: coffeeData,
       selectedCoffee: "",
       skillLock: false, // if set to true, will not continue on coffee selection and display dialogue instead
@@ -94,7 +89,11 @@ export default {
       }
     },
   },
-
+  computed: {
+    level() {
+      return this.$store.state.currentLevel;
+    },
+  },
   watch: {
     currentLevel(newValue) {
       this.$emit("levelUp", newValue); // if the currentLevel changes, send that new value up to the parent component (App.vue) to send on down to Header.vue
