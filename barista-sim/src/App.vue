@@ -5,19 +5,14 @@
       v-model="drawer"
       :mini-variant.sync="mini"
       permanent
-      app      
-      bottom
+      app     
+      expand-on-hover 
     >
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="./assets/imgs/coffee-icon.png"></v-img>
         </v-list-item-avatar>
-
-        <v-list-item-title>Navigation</v-list-item-title>
-
-        <v-btn icon @click.stop="mini = !mini">
-          <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
+        
       </v-list-item>
 
       <v-divider></v-divider>
