@@ -3,7 +3,7 @@
     <div class="descriptiveText" v-show="!showCustomers">
       <button @click="customerStart(), customerRandom()">Clock In</button>
     </div>
-    <div class="descriptiveText" v-show="showCustomers">
+    <div class="descriptiveText" v-if="showCustomers">
     <p>Clocked in! A customer approaches...</p><br />
            <v-icon>mdi-account</v-icon><p><strong>{{ randomCustomer.name }}</strong></p>
            <p>&quot;{{ randomCustomer.order }}.&quot;</p><br />
@@ -20,7 +20,7 @@ const random = (min, max) => Math.floor(Math.random() * (max - min) + min);    /
 const customerData = [
   {
     id: 1,
-    name: "Jo Mugs",
+    name: "Jo Mugsy",
     order: "Hello, I'd like a coffee, please", 
   },
   {
@@ -35,7 +35,7 @@ const customerData = [
   },
   {
     id: 4,
-    name: "Fabio Impresso",
+    name: "Antonio Espresso",
     order: "Surprise me", 
   },
   {
