@@ -1,5 +1,5 @@
 <template>
   <div class="clock-in">
-    <h1>Clock In</h1>
+    <button>Clock In</button>
   </div>
 </template>

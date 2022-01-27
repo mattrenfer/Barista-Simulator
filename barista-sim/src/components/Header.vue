@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <h3 class="title">Barista Simulator</h3>
-    <h3 class="level">Level: {{ currentLevel }}</h3>
+    <div class="the-title">Barista Simulator</div>
+    <div class="level">Level: {{ currentLevel }}</div>
   </div>
 </template>
 
@@ -18,10 +18,17 @@ export default {
 
 <style scoped>
 
-.header { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start;}
+.header { 
+  display: flex; 
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: .4em;
+  }
 
-.title { align-self: flex-start; }
-.level { align-self: flex-end; }
+.the-title, .level {
+  vertical-align: middle !important;
+  font-size: 1.3em !important;
+} 
 
 
 </style>
