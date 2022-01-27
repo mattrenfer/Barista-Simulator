@@ -6,10 +6,18 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentLevel: 1,
+    clockedIn: false,
+    currentCustomer: {},
   },
   mutations: {
     levelUp(state) {
       state.currentLevel++;
+    },
+    clockedIn(state) {
+      state.clockedIn = true;
+    },
+    currentCustomer(state, customer) {
+      state.currentCustomer = customer;
     },
   },
   actions: {},

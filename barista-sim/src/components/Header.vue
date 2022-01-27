@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="the-title">Barista Simulator</div>
+    <div class="the-title"><router-link to="/">Barista Simulator</router-link></div>
     <div class="level">Level: {{ level }}</div>
   </div>
 </template>

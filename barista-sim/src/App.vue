@@ -20,7 +20,7 @@
         <router-link to="/">
           <v-list-item link>
             <v-list-item-icon>
-              <v-icon color="#ECE0D1">mdi-home-city</v-icon>
+              <v-icon color="#ECE0D1">mdi-sofa-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Home</v-list-item-title>
@@ -42,7 +42,7 @@
         <router-link to="/clock-in">
           <v-list-item link>
             <v-list-item-icon>
-              <v-icon color="#ECE0D1">mdi-account-group-outline</v-icon>
+              <v-icon color="#ECE0D1">mdi-clock-time-five-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Clock In</v-list-item-title>
@@ -120,6 +120,14 @@ export default {
   display: block !important;
 }
 
+.v-application a {
+  color: #ece0d1 !important;
+}
+
+.v-application a:hover {
+  color: #f2f2f2 !important;
+}
+
 h1 {
   text-align: center;
   color: #d2c1b0;
@@ -148,6 +156,10 @@ a:active {
 
 a:hover {
   color: #f2f2f2;
+}
+
+.viewTitle {
+  margin-bottom: 50px;
 }
 
 .starting-buttons {

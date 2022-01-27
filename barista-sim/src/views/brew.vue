@@ -1,5 +1,6 @@
 <template>
   <div class="brew">
+    <h1 class="viewTitle">Brew</h1>
     <div v-show="!showBrewTypes">
       <div class="descriptiveText">
         <p v-if="makeCoffee">Wanna make some coffee?</p>
