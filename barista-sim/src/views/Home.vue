@@ -9,11 +9,11 @@
 
       <p>Your Barista <strong>level</strong> determines what drinks you can make.</p>
 
-      <p>
+      <!-- <p>
         You can also drink your brewed drinks, giving you a caffine boost! Your
         caffine level determines how fast you brew drinks.
-      </p>
-      <p>Earn cash through your tips and crappy minimum wage to...live life outside of your barista job...and stuff.</p>
+      </p> -->
+      <p>Earn cash through your tips and crappy minimum wage to...have a life outside of your barista job and stuff.</p>
     </div>
   </transition>
 </template>

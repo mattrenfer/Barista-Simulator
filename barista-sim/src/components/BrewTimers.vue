@@ -26,14 +26,14 @@
         <p v-else>DONE POURING</p>
         <img src="@/assets/imgs/coffee-cup.png" width="15%" height="15%" />
       </div>
-      <div class="selection" v-show="drinkDone">
+      <!-- <div class="selection" v-show="drinkDone">
         <button class="uiButtons" @click="levelUp()">Drink coffee!</button>
       </div>
       <div class="selection" v-show="showDrankCoffee">
         <button class="uiButtons" @click="resetIt()">
           Let's brew some more!
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -45,6 +45,12 @@ export default {
   name: "BrewTimers",
   components: {
     Countdown,
+  },
+  props: {
+    selectedCoffee: {
+      type: String,
+      default: ''
+    },
   },
   data() {
     return {
@@ -67,6 +73,8 @@ export default {
     },
     isDrinkDone(timerDone) {
       this.drinkDone = timerDone;
+      this.$store.commit("currentDrink", this.selectedCoffee);
+      console.log(this.$store.state.currentDrink);
     },
     levelUp() {
       this.showDrankCoffee = true;

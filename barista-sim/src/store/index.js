@@ -8,6 +8,7 @@ export default new Vuex.Store({
     currentLevel: 1,
     clockedIn: false,
     currentCustomer: {},
+    currentDrink: '',
   },
   mutations: {
     levelUp(state) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     currentCustomer(state, customer) {
       state.currentCustomer = customer;
+    },
+    currentDrink(state, drink) {
+      state.currentDrink = drink;
     },
   },
   actions: {},

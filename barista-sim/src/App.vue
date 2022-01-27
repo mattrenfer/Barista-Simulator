@@ -227,11 +227,10 @@ button {
 
 /* Animation Styles */
 
-.fadeIn-enter-active,
-.pot-leave-active {
+.fadeIn-enter-active {
   transition: opacity 2.5s;
 }
-.fadeIn-enter, .pot-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fadeIn-enter /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }
 </style>

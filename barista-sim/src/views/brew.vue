@@ -31,7 +31,7 @@
     </div>
 
     <div v-if="brewCoffee">
-      <BrewTimers @resetIt="brewCoffee = $event" />
+      <BrewTimers :selectedCoffee="selectedCoffee" @resetIt="brewCoffee = $event" />
     </div>
   </div>
 </template>
