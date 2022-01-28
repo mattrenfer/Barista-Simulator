@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="the-title"><router-link to="/">Barista Simulator</router-link></div>
-    <div class="tips">Tips: {{ currentTips }}</div>
+    <div class="tips" v-if="this.$store.state.currentTips">Tips: {{ currentTips }}</div>
     <div class="level">Level: {{ level }}</div>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
       return this.$store.state.currentLevel;
     },
     currentTips() {
-      return this.$store.state.currentTips;
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(this.$store.state.currentTips);
     },
   },
 };

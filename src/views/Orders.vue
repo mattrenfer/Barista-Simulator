@@ -56,7 +56,7 @@ const customerData = [
     name: "Jill Grind",
     order: "I'll take a regular, thanks.",
     drink: "Regular",    
-    tip: 1.00,
+    tip: 1,
   },
   {
     id: 3,
@@ -101,7 +101,9 @@ export default {
   },
 
   mounted () {
-      this.customerRandom();
+    if (!this.$store.state.currentCustomer) {
+        this.customerRandom();
+    }
   },
 
   computed: {

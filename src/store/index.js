@@ -10,7 +10,7 @@ export default new Vuex.Store({
     clockedInDate: '',
     clockedInTime: '',
     clockedIn: false,
-    currentCustomer: {},
+    currentCustomer: '',
     currentDrink: '',
   },
   mutations: {
