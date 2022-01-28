@@ -1,18 +1,7 @@
 <template>
   <div class="brew">
     <h1 class="viewTitle">Brew</h1>
-    <div v-show="!showBrewTypes">
-      <div class="descriptiveText">
-        <p v-if="makeCoffee">Wanna make some coffee?</p>
-        <p v-else>Nah? That's cool, I guess...</p>
-      </div>
-      <div v-show="!showBrewTypes" class="selection">
-        <button class="uiButtons" @click="showBrewTypes = true">Yes</button>
-        <button class="uiButtons" @click="makeCoffee = !makeCoffee">No</button>
-      </div>
-    </div>
-
-    <div v-show="showBrewTypes && !brewCoffee">
+    <div v-show="!brewCoffee">
       <div class="descriptiveText">
         <p v-if="!skillLock">What kind of coffee shall we make?</p>
         <p v-else>
@@ -72,8 +61,6 @@ export default {
       coffees: coffeeData,
       selectedCoffee: "",
       skillLock: false, // if set to true, will not continue on coffee selection and display dialogue instead
-      makeCoffee: true, // pagination
-      showBrewTypes: false,
       brewCoffee: false, // pagination end
     };
   },
