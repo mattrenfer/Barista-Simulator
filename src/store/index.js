@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentLevel: 1,
-    currentTips: '',
+    currentTips: 0,
     clockedInDate: '',
     clockedInTime: '',
     clockedIn: false,
@@ -17,8 +17,8 @@ export default new Vuex.Store({
     levelUp(state) {
       state.currentLevel++;
     },
-    currentTips(state) {
-      state.currentTips++;
+    getTip(state, tip) {
+      state.currentTips += tip;
     },
     clockedInDate(state, date) {
       state.clockedInDate = date;

@@ -49,36 +49,42 @@ const customerData = [
     name: "Jo Mugsy",
     order: "Hello, I'd like a coffee, please.",
     drink: "Regular",
+    tip: .25,
   },
   {
     id: 2,
     name: "Jill Grind",
     order: "I'll take a regular, thanks.",
     drink: "Regular",    
+    tip: 1.00,
   },
   {
     id: 3,
     name: "Jack Venti",
     order: "Large cup of joe for me.",
     drink: "Regular",
+    tip: .50,
   },
   {
     id: 4,
     name: "Antonio Espresso",
     order: "Surprise me.",
     drink: "Regular",
+    tip: .75,
   },
   {
     id: 5,
     name: "Billy Bean",
     order: "What's good here?",
     drink: "Regular",
+    tip: .75,
   },
   {
     id: 6,
     name: "Negative Nancy",
     order: "I'd like a Mocha, please",
     drink: "Mocha",
+    tip: .10,
   },
 ];
 
@@ -127,6 +133,7 @@ export default {
       console.log(this.$store.state.currentDrink);
       if (this.$store.state.currentDrink === this.$store.state.currentCustomer.drink) {
         this.$store.commit("levelUp");
+        this.$store.commit("getTip", this.$store.state.currentCustomer.tip);         // tip the Barista!
         this.$store.commit("currentDrink", '');    // reset the currentDrink
         this.servePass = true;
         this.serveEmpty = "";
