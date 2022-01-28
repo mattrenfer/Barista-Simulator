@@ -6,6 +6,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentLevel: 1,
+    currentTips: '',
+    clockedInDate: '',
+    clockedInTime: '',
     clockedIn: false,
     currentCustomer: {},
     currentDrink: '',
@@ -13,6 +16,15 @@ export default new Vuex.Store({
   mutations: {
     levelUp(state) {
       state.currentLevel++;
+    },
+    currentTips(state) {
+      state.currentTips++;
+    },
+    clockedInDate(state, date) {
+      state.clockedInDate = date;
+    },
+    clockedInTime(state, time) {
+      state.clockedInTime = time
     },
     clockedIn(state) {
       state.clockedIn = true;

@@ -47,12 +47,12 @@ const coffeeData = [
   },
   {
     id: 2,
-    name: "Espresso",
+    name: "Mocha",
     reqLevel: 2, // check against the current level
   },
   {
     id: 3,
-    name: "Mocha",
+    name: "Espresso",
     reqLevel: 5, // check against the current level
   },
   {
