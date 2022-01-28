@@ -27,13 +27,19 @@ export default {
 
 <style scoped>
 .home {
-  max-width: 90%;
+  max-width: 50%;
   margin: auto;
 }
 
 
 h2 {
   font-size: 36px !important;
+  margin-bottom: 50px !important;
+}
+
+h3 {
+  font-size: 30px !important;
+  margin-bottom: 25px !important;
 }
 
 p {
