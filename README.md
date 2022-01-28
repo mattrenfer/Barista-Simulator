@@ -15,6 +15,14 @@ npm run serve
 npm run build
 ```
 
+### Deploys to Github Page
+```
+right click barista-sim directory
+Git BASH Here
+bash deploy.sh
+
+```
+
 ### Lints and fixes files
 ```
 npm run lint
@@ -22,3 +30,5 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
