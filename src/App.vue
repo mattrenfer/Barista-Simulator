@@ -49,6 +49,18 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
+
+         <router-link to="/orders">
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon color="#ECE0D1">mdi-message-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Orders</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
       </v-list>
     </v-navigation-drawer>
 

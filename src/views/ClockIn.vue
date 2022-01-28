@@ -2,105 +2,22 @@
   <div class="clock-in">
     <h1 class="viewTitle">Clock In</h1>
     <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-      <button @click="clockedIn(), customerRandom()">Clock In</button>
+      <button @click="clockIn(), customerRandom()">Clock In</button>
     </div>
     <div class="descriptiveText" v-if="this.$store.state.clockedIn">
       <p>CLOCKED IN ON {{ clockedInDate }}<br /> AT {{ clockedInTime }}</p>
-      <v-divider>inset</v-divider>
       <br /><br />
-      <p>A customer approaches...</p>
-      <br />
-      <transition-group name="fadeIn" appear>
-        <v-icon :key="1">mdi-account</v-icon>
-        <p :key="2">{{ currentCustomer.name }}</p>
-        <p :key="3">&quot;{{ currentCustomer.order }}&quot;</p>
-      </transition-group>
-      <br /> 
-      <div class="descriptiveText" v-if="serveEmpty">
-        &quot;You haven't made me a drink yet. Get brewin'!&quot;
-      </div>
-      <div class="descriptiveText" v-if="serveFail">
-        &quot;That's not even a little bit close to what I ordered. Try again?&quot;
-      </div>
-       <div class="descriptiveText" v-if="servePass">
-        &quot;YUM. Thanks for the drink!&quot;
-      </div>
-      <br /> 
-      <br />
-      <div class="selection">
-        <button @click="serveDrink()">
-          Serve Drink&nbsp;<v-icon class="icon-small">mdi-coffee</v-icon>
-        </button>
-        <button @click="customerNext()" v-if="showNextButton">
-          NEXT!&nbsp;
-        </button>
-        <button @click="customerRandom()">
-          Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
-        </button>
-      </div>
+      <button @click="clockOut()">Clock Out</button>
     </div>
   </div>
 </template>
 
 <script>
-const random = (min, max) => Math.floor(Math.random() * (max - min) + min); // creates a number between a min & max value || import this as a constant later
-
-// import the below customer data later
-const customerData = [
-  {
-    id: 1,
-    name: "Jo Mugsy",
-    order: "Hello, I'd like a coffee, please.",
-    drink: "Regular",
-  },
-  {
-    id: 2,
-    name: "Jill Grind",
-    order: "I'll take a regular, thanks.",
-    drink: "Regular",    
-  },
-  {
-    id: 3,
-    name: "Jack Venti",
-    order: "Large cup of joe for me.",
-    drink: "Regular",
-  },
-  {
-    id: 4,
-    name: "Antonio Espresso",
-    order: "Surprise me.",
-    drink: "Regular",
-  },
-  {
-    id: 5,
-    name: "Billy Bean",
-    order: "What's good here?",
-    drink: "Regular",
-  },
-  {
-    id: 6,
-    name: "Negative Nancy",
-    order: "I'd like a Mocha, please",
-    drink: "Mocha",
-  },
-];
 
 export default {
   name: "ClockIn",
-  data() {
-    return {
-      customers: customerData,
-      serveFail: false,
-      servePass: false,
-      serveEmpty: false,
-      showNextButton: false,
-    };
-  },
-
+  
   computed: {
-    currentCustomer() {
-      return this.$store.state.currentCustomer;
-    },
     clockedInDate() {
       return this.$store.state.clockedInDate;
     },
@@ -110,37 +27,17 @@ export default {
   },
 
   methods: {
-    clockedIn() {
+    clockIn() {
       this.$store.commit("clockedInDate", this.printDate());
       this.$store.commit("clockedInTime", this.printTime());
-      this.$store.commit("clockedIn");
+      this.$store.commit("clockedIn", true);
     },
-    customerRandom() {
-      this.serveFail = "";
-      this.servePass = "";
-      this.serveEmpty = "";
-      let num = random(0, customerData.length); // makes the random min max equal 0 through the length of an array
-      this.$store.commit("currentCustomer", customerData[num]); // find a random customer, store in state, and interpolate their name and number
+    clockOut() {
+      //this.$store.commit("clockedInDate", this.printDate());   // needs clock out time
+      //this.$store.commit("clockedInTime", this.printTime());   // needs clock out time
+      this.$store.commit("clockedIn", false);
     },
-    serveDrink() {
-      console.log(this.$store.state.currentDrink);
-      if (this.$store.state.currentDrink === this.$store.state.currentCustomer.drink) {
-        this.$store.commit("levelUp");
-        this.$store.commit("currentDrink", '');    // reset the currentDrink
-        this.servePass = true;
-        this.serveEmpty = "";
-        this.showNextButton = "true";
-      } else if (this.$store.state.currentDrink === "") {
-        this.serveEmpty = true;
-      } else {
-        console.log("nah");
-        this.serveFail = true;
-      }
-    },
-    customerNext(){
-      this.customerRandom();
-      this.showNextButton = false;
-    },
+    
     printDate: function () {
       return new Date().toLocaleDateString();
     },
@@ -152,13 +49,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-icon.v-icon {
-  font-size: 100px !important;
-}
-
-.v-icon.v-icon.icon-small {
-  font-size: 30px !important;
-}
 
 /* Animation Styles */
 

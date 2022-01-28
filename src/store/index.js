@@ -26,8 +26,8 @@ export default new Vuex.Store({
     clockedInTime(state, time) {
       state.clockedInTime = time
     },
-    clockedIn(state) {
-      state.clockedIn = true;
+    clockedIn(state, clocked) {
+      state.clockedIn = clocked;
     },
     currentCustomer(state, customer) {
       state.currentCustomer = customer;

@@ -23,6 +23,11 @@ const routes = [
     path: '/clock-in',
     name: 'Clock In',
     component: () => import(/* webpackChunkName: "about" */ '@/views/ClockIn.vue')
+  },
+  {
+    path: '/orders',
+    name: 'Orders',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Orders.vue')
   }
 ]
 
