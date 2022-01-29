@@ -12,7 +12,7 @@
       <div v-for="coffee in coffees" :key="coffee.id" class="verticalButtons">
         <button
           @click="setSelectedCoffee(coffee.name, coffee.reqLevel)"
-          :class="{ locked: coffee.reqLevel > level }"
+          :class="{ locked: coffee.reqLevel > currentLevel }"
         >
           {{ coffee.name }}
         </button>
@@ -58,6 +58,7 @@ export default {
   },
   data() {
     return {
+      currentLevel: this.$store.state.currentLevel,
       coffees: coffeeData,
       selectedCoffee: "",
       skillLock: false, // if set to true, will not continue on coffee selection and display dialogue instead
@@ -67,7 +68,7 @@ export default {
   methods: {
     setSelectedCoffee(name, reqLevel) {
       this.selectedCoffee = name;
-      if (reqLevel > this.currentLevel) {
+      if (reqLevel > this.$store.state.currentLevel) {
         // if the required level of the selected coffee is greater than the current level
         this.skillLock = true;
         this.brewCoffee = false; // don't advance & display message
