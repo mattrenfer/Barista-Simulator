@@ -4,9 +4,9 @@
       <h2>Welcome to Barista Simulator</h2>
       <br /><br />
       <h3>How to Play</h3>
-      <p><strong>Clock In</strong> to start taking customer <strong>Orders</strong>!</p>
+      <p><strong><router-link to="/clock-in">Clock In</router-link></strong> to start taking customer <strong><router-link to="/orders">Orders</router-link></strong>!</p>
 
-      <p><strong>Brew</strong> to make your hot drinks to serve customers (or refuse the rude ones)!</p>
+      <p><strong><router-link to="/brew">Brew</router-link></strong> to make your hot drinks to serve customers (or refuse the rude ones)!</p>
 
       <p>Your Barista <strong>level</strong> determines what drinks you can make.</p>
 

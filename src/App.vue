@@ -14,8 +14,6 @@
         </v-list-item-avatar>
       </v-list-item>
 
-      <v-divider></v-divider>
-
       <v-list dense>
         <router-link to="/">
           <v-list-item link>
@@ -50,7 +48,7 @@
           </v-list-item>
         </router-link>
 
-         <router-link to="/orders">
+        <router-link to="/orders">
           <v-list-item link>
             <v-list-item-icon>
               <v-icon color="#ECE0D1">mdi-message-outline</v-icon>
@@ -60,7 +58,6 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
-
       </v-list>
     </v-navigation-drawer>
 
@@ -71,6 +68,13 @@
     <v-main>
       <router-view />
     </v-main>
+
+    <v-system-bar color="#37251b" lights-out>
+      <v-spacer></v-spacer>
+
+      Version 0.1.0
+      &nbsp;<router-link to="/settings"><v-icon class="icon-small">mdi-cog-outline</v-icon></router-link>
+    </v-system-bar>
   </v-app>
 </template>
 
@@ -110,10 +114,15 @@ export default {
 
 .v-app-bar {
   background-color: #37251b !important;
+  height: auto !important;
 }
 
 .v-main {
   margin-top: 30px;
+}
+
+.v-system-bar {
+  height: 30px !important;
 }
 
 .v-list-item__title {
@@ -128,8 +137,13 @@ export default {
   font-size: 35px !important;
 }
 
+.v-icon.v-icon.icon-small {
+  font-size: 22px !important;
+}
+
 .v-toolbar__content {
   display: block !important;
+  height: auto !important;
 }
 
 .v-application a {
@@ -138,6 +152,10 @@ export default {
 
 .v-application a:hover {
   color: #f2f2f2 !important;
+}
+
+.header {
+  margin-top: 0px !important;
 }
 
 h1 {
