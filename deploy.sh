@@ -5,6 +5,7 @@ set -e
 
 # build
 npm run build
+npm version patch
 
 # navigate into the build output directory
 cd dist
