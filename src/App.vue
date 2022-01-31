@@ -72,7 +72,7 @@
     <v-system-bar color="#37251b" lights-out>
       <v-spacer></v-spacer>
 
-      Version 0.1.0
+      Version {{ versionNumber }}
       &nbsp;<router-link to="/settings"><v-icon class="icon-small">mdi-cog-outline</v-icon></router-link>
     </v-system-bar>
   </v-app>
@@ -80,6 +80,7 @@
 
 <script>
 import Header from "@/components/Header.vue";
+import { version } from '../package.json';
 
 export default {
   name: "App",
@@ -88,6 +89,7 @@ export default {
   },
   data() {
     return {
+      versionNumber: version,
       drawer: true,
       mini: true,
     };
