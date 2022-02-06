@@ -14,6 +14,7 @@ export default new Vuex.Store({
     currentDrink: '',
     currentCarafe: 4,
     currentCups: 0,
+    carafePrice: 1,
   },
   mutations: {
     levelUp(state) {
@@ -44,7 +45,9 @@ export default new Vuex.Store({
       state.currentCups--;
     },
     buyCarafe(state) {
-      state.currentCarafe += 2 ;
+      state.currentCarafe += 2;
+      state.currentTips -= state.carafePrice;
+      state.carafePrice *= 2;
     },
   },
   actions: {},

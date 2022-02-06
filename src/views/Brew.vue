@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     setSelectedCoffee(name, reqLevel) {
-      if ( this.cups  > 1) {
+      if ( this.cups  > 0) {
         this.selectedCoffee = name;
         if (reqLevel > this.$store.state.currentLevel) {
           // if the required level of the selected coffee is greater than the current level
