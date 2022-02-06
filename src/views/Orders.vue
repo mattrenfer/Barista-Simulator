@@ -26,7 +26,7 @@
       <br />
       <div class="selection">
         <button @click="serveDrink()">
-          Serve Drink&nbsp;<v-icon class="icon-small">mdi-coffee</v-icon>
+          Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small">mdi-coffee</v-icon>
         </button>
         <button @click="customerNext()" v-if="showNextButton">
           NEXT!&nbsp;
@@ -103,7 +103,6 @@ export default {
       } else if (this.currentDrink === "") {
         this.serveEmpty = true;
       } else {
-        console.log("nah");
         this.serveFail = true;
       }
     },

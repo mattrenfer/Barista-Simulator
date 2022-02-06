@@ -1,12 +1,18 @@
 <template>
   <div class="brew">
     <h1 class="viewTitle">Brew</h1>
-    <div v-show="!brewCoffee">
+    <h2>
+      Cups available: {{ cups }}<br />
+      <span v-show="this.currentDrink">Current Drink: {{ currentDrink }}</span>
+    </h2>
+
+    <div id="main">
+      <BrewCarafe />
+    <div id="coffeeSelection" v-show="!brewCoffee">
       <div class="descriptiveText">
-        <p v-if="!skillLock">What kind of coffee shall we make?</p>
-        <p v-else>
-          You haven't the skillz to make a {{ selectedCoffee }} yet!<br />
-          Learn how to brew better, bro.
+        <p>What kind of coffee shall we pour?</p>
+        <p>
+          {{ msg }}
         </p>
       </div>
       <div v-for="coffee in coffees" :key="coffee.id" class="verticalButtons">
@@ -20,46 +26,60 @@
     </div>
 
     <div v-if="brewCoffee">
-      <BrewTimers :selectedCoffee="selectedCoffee" @resetIt="brewCoffee = $event" />
+
+      <Pour :selectedCoffee="selectedCoffee" @resetIt="brewCoffee = $event" />
+    </div>
     </div>
   </div>
 </template>
 
 <script>
-import BrewTimers from "@/components/BrewTimers.vue";
+import Pour from "@/components/Pour.vue";
+import BrewCarafe from "@/components/BrewCarafe.vue";
 import { coffeeData } from "@/shared/data/drinks.js";
 
 export default {
   name: "Brew",
   components: {
-    BrewTimers,
+    Pour,
+    BrewCarafe,
   },
   data() {
     return {
       currentLevel: this.$store.state.currentLevel,
       coffees: coffeeData,
       selectedCoffee: "",
-      skillLock: false, // if set to true, will not continue on coffee selection and display dialogue instead
       brewCoffee: false, // pagination end
+      msg: ""
     };
   },
   methods: {
     setSelectedCoffee(name, reqLevel) {
-      this.selectedCoffee = name;
-      if (reqLevel > this.$store.state.currentLevel) {
-        // if the required level of the selected coffee is greater than the current level
-        this.skillLock = true;
-        this.brewCoffee = false; // don't advance & display message
+      if ( this.cups  > 1) {
+        this.selectedCoffee = name;
+        if (reqLevel > this.$store.state.currentLevel) {
+          // if the required level of the selected coffee is greater than the current level
+          this.msg = `You haven't the skillz to make a ${this.selectedCoffee} yet! Learn how to brew better, bro.`
+          this.brewCoffee = false; // don't advance & display message
+        } else {
+          this.skillLock = false;
+          this.brewCoffee = true; // otherwise, advance
+        }
       } else {
-        this.skillLock = false;
-        this.brewCoffee = true; // otherwise, advance
-      }
+        this.msg = "You are out of cups in your carafe. Brew some more!"
+       }
+      },
     },
-  },
   computed: {
     level() {
       return this.$store.state.currentLevel;
     },
+    cups(){
+      return this.$store.state.currentCups;
+    },
+    currentDrink(){
+      return this.$store.state.currentDrink;
+    }
   },
   watch: {
     currentLevel(newValue) {
@@ -69,5 +89,17 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+
+#main { 
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+
+#coffeeSelection {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+</style>
