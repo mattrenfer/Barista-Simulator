@@ -40,53 +40,10 @@
 </template>
 
 <script>
-const random = (min, max) => Math.floor(Math.random() * (max - min) + min); // creates a number between a min & max value || import this as a constant later
 
-// import the below customer data later
-const customerData = [
-  {
-    id: 1,
-    name: "Jo Mugsy",
-    order: "Hello, I'd like a coffee, please.",
-    drink: "Regular",
-    tip: .25,
-  },
-  {
-    id: 2,
-    name: "Jill Grind",
-    order: "I'll take a regular, thanks.",
-    drink: "Regular",    
-    tip: 1,
-  },
-  {
-    id: 3,
-    name: "Jack Venti",
-    order: "Large cup of joe for me.",
-    drink: "Regular",
-    tip: .50,
-  },
-  {
-    id: 4,
-    name: "Antonio Espresso",
-    order: "Surprise me.",
-    drink: "Regular",
-    tip: .75,
-  },
-  {
-    id: 5,
-    name: "Billy Bean",
-    order: "What's good here?",
-    drink: "Regular",
-    tip: .75,
-  },
-  {
-    id: 6,
-    name: "Negative Nancy",
-    order: "I'd like a Mocha, please",
-    drink: "Mocha",
-    tip: .10,
-  },
-];
+import { customerData } from "@/shared/data/customers.js";
+import { random } from "@/shared/constants/random.js";
+
 
 export default {
   name: "Orders",
@@ -109,6 +66,9 @@ export default {
   computed: {
     currentCustomer() {
       return this.$store.state.currentCustomer;
+    },
+    currentDrink() {
+      return this.$store.state.currentDrink;
     },
     clockedInDate() {
       return this.$store.state.clockedInDate;
@@ -133,14 +93,14 @@ export default {
     },
     serveDrink() {
       console.log(this.$store.state.currentDrink);
-      if (this.$store.state.currentDrink === this.$store.state.currentCustomer.drink) {
+      if (this.currentCustomer.drink === this.currentDrink || this.currentCustomer.drink.includes(this.currentDrink)) {
         this.$store.commit("levelUp");
         this.$store.commit("getTip", this.$store.state.currentCustomer.tip);         // tip the Barista!
         this.$store.commit("currentDrink", '');    // reset the currentDrink
         this.servePass = true;
         this.serveEmpty = "";
         this.showNextButton = "true";
-      } else if (this.$store.state.currentDrink === "") {
+      } else if (this.currentDrink === "") {
         this.serveEmpty = true;
       } else {
         console.log("nah");
