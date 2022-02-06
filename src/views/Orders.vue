@@ -93,7 +93,7 @@ export default {
     },
     serveDrink() {
       console.log(this.$store.state.currentDrink);
-      if (this.currentCustomer.drink === this.currentDrink || this.currentCustomer.drink.includes(this.currentDrink)) {
+      if (this.currentCustomer.drink === this.currentDrink || this.currentDrink && this.currentCustomer.drink.includes(this.currentDrink)) {
         this.$store.commit("levelUp");
         this.$store.commit("getTip", this.$store.state.currentCustomer.tip);         // tip the Barista!
         this.$store.commit("currentDrink", '');    // reset the currentDrink
