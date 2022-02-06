@@ -26,17 +26,6 @@
           </v-list-item>
         </router-link>
 
-        <router-link to="/brew">
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon color="#ECE0D1">mdi-coffee-maker</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Brew</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </router-link>
-
         <router-link to="/clock-in">
           <v-list-item link>
             <v-list-item-icon>
@@ -44,6 +33,17 @@
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Clock In</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
+        <router-link to="/brew">
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon color="#ECE0D1">mdi-coffee-maker</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Brew</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </router-link>
@@ -58,6 +58,19 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
+
+
+         <router-link to="/shop" v-if="this.$store.state.currentTips">
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon color="#ECE0D1">mdi-currency-usd</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Shop</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
       </v-list>
     </v-navigation-drawer>
 
@@ -93,6 +106,11 @@ export default {
       drawer: true,
       mini: true,
     };
+  },
+  computed: {
+    currentTips() {
+      return this.$store.state.currentTips;
+    },
   },
 };
 </script>
