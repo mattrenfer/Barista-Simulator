@@ -52,7 +52,7 @@ export const customerData = [
       id: 8,
       name: "Tucker Tipswell",
       order: "Latte love for me, please",
-      drink: "Mocha",
+      drink: "Latte",
       tip: 1,
     },
     {
