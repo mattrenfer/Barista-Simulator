@@ -3,8 +3,8 @@ export const customerData = [
       id: 1,
       name: "Jo Mugsy",
       order: "Hello, I'd like a coffee, please.",
-      drink: "Regular",
-      tip: .05,
+      drink: ["Regular", "Espresso", "Mocha", "Latte"],
+      tip: .25,
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ export const customerData = [
     {
       id: 3,
       name: "Jack Venti",
-      order: "Large cup of joe for me.",
+      order: "Cup of joe for me.",
       drink: "Regular",
       tip: .05,
     },

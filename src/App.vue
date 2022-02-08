@@ -147,6 +147,7 @@ export default {
 
 .v-list-item__title {
   font-size: 1.5rem !important;
+  line-height: 1.2 !important;
 }
 
 .v-list-item__icon {
