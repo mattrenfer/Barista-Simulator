@@ -10,7 +10,7 @@
       <transition-group name="fadeIn" appear>
         <v-icon :key="1">mdi-account</v-icon>
         <p :key="2">{{ currentCustomer.name }}</p>
-        <p :key="3">&quot;{{ currentCustomer.order }}&quot;</p>
+        <p :key="3">&quot;<em>{{ currentCustomer.order }}</em>&quot;</p>
       </transition-group>
       <br /> 
       <div class="descriptiveText" v-if="serveEmpty">

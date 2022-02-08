@@ -19,7 +19,9 @@ npm run build
 ```
 right click barista-sim directory
 Git BASH Here
-bash deploy.sh
+bash deploy.sh 
+
+(or bash deploy-fix.sh for hotfix that doesn't bump up the version number)
 
 ```
 
