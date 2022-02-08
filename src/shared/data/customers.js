@@ -1,72 +1,13 @@
-export const customerData = [
-    {
-      id: 1,
-      name: "Jo Mugsy",
-      order: "Hello, I'd like a coffee, please.",
-      drink: ["Regular", "Espresso", "Mocha", "Latte"],
-      tip: .25,
-    },
-    {
-      id: 2,
-      name: "Jill Grind",
-      order: "I'll take a regular, thanks.",
-      drink: "Regular",    
-      tip: .10,
-    },
-    {
-      id: 3,
-      name: "Jack Venti",
-      order: "Cup of joe for me.",
-      drink: "Regular",
-      tip: .05,
-    },
-    {
-      id: 4,
-      name: "Billy Bean",
-      order: "Surprise me.",
-      drink: ["Regular", "Espresso", "Mocha", "Latte"],
-      tip: .05,
-    },
-    {
-      id: 5,
-      name: "Antonio Espresso",
-      order: "Guess what I like.",
-      drink: "Espresso",
-      tip: .30,
-    },
-    {
-      id: 6,
-      name: "Negative Ned",
-      order: "I'd like a Mocha, please",
-      drink: "Mocha",
-      tip: .10,
-    },
-    {
-      id: 7,
-      name: "Piper Peppermint",
-      order: "I'd like a Peppermint Mocha, please",
-      drink: "Mocha",
-      tip: .25,
-    },
-    {
-      id: 8,
-      name: "Tucker Tipswell",
-      order: "Latte love for me, please",
-      drink: "Latte",
-      tip: 1,
-    },
-    {
-      id: 9,
-      name: "Mary Mocha",
-      order: "How's your Mocha here?",
-      drink: "Mocha",
-      tip: .50,
-    },
-    {
-      id: 10,
-      name: "Easton Espresso",
-      order: "Figure me out",
-      drink: "Espresso",
-      tip: .30,
-    },
-  ];
+import * as axios from 'axios';
+
+const getCustomers = async function () {
+  const response = await axios.get('api/customers.json');
+  const customers = response.data.map(c => {
+    return c;
+  })
+  return customers;
+}
+
+export const data = {
+  getCustomers,
+};

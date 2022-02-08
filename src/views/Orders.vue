@@ -41,7 +41,7 @@
 
 <script>
 
-import { customerData } from "@/shared/data/customers.js";
+import { data } from "@/shared/data/customers.js";
 import { random } from "@/shared/constants/random.js";
 
 
@@ -49,7 +49,7 @@ export default {
   name: "Orders",
   data() {
     return {
-      customers: customerData,
+      customers: [],
       serveFail: false,
       servePass: false,
       serveEmpty: false,
@@ -57,11 +57,6 @@ export default {
     };
   },
 
-  mounted () {
-    if (!this.$store.state.currentCustomer) {
-        this.customerRandom();
-    }
-  },
 
   computed: {
     currentCustomer() {
@@ -78,7 +73,17 @@ export default {
     },
   },
 
+  async created(){
+    await this.loadCustomers();
+    if (!this.$store.state.currentCustomer) {
+          this.customerRandom();
+      }
+  },
+
   methods: {
+    async loadCustomers() {
+      this.customers = await data.getCustomers();
+    },
     clockedIn() {
       this.$store.commit("clockedInDate", this.printDate());
       this.$store.commit("clockedInTime", this.printTime());
@@ -88,8 +93,8 @@ export default {
       this.serveFail = "";
       this.servePass = "";
       this.serveEmpty = "";
-      let num = random(0, customerData.length); // makes the random min max equal 0 through the length of an array
-      this.$store.commit("currentCustomer", customerData[num]); // find a random customer, store in state, and interpolate their name and number
+      let num = random(0, this.customers.length); // makes the random min max equal 0 through the length of an array
+      this.$store.commit("currentCustomer", this.customers[num]); // find a random customer, store in state, and interpolate their name and number
     },
     serveDrink() {
       console.log(this.$store.state.currentDrink);

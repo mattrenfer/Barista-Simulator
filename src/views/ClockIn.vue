@@ -2,7 +2,7 @@
   <div class="clock-in">
     <h1 class="viewTitle">Clock In</h1>
     <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-      <button @click="clockIn(), customerRandom()">Clock In</button>
+      <button @click="clockIn()">Clock In</button>
     </div>
     <div class="descriptiveText" v-if="this.$store.state.clockedIn">
       <p>CLOCKED IN ON {{ clockedInDate }}<br /> AT {{ clockedInTime }}</p>
