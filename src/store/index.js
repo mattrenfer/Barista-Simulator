@@ -4,6 +4,18 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const state = { 
+  customers: [{
+    "id": 1,
+    "name": "Jo Mugsy",
+    "order": "Hello, I'd like a coffee, please.",
+    "drink": [
+      "Regular",
+      "Espresso",
+      "Mocha",
+      "Latte"
+    ],
+    "tip": 0.25
+  }],
   currentLevel: 1,
   currentTips: 0,
   clockedInDate: '',

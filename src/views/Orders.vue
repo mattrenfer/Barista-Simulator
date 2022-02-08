@@ -43,13 +43,13 @@
 
 import { data } from "@/shared/data/customers.js";
 import { random } from "@/shared/constants/random.js";
+import { mapState } from 'vuex';
 
 
 export default {
   name: "Orders",
   data() {
     return {
-      customers: [],
       serveFail: false,
       servePass: false,
       serveEmpty: false,
@@ -59,6 +59,7 @@ export default {
 
 
   computed: {
+    ...mapState( { customers: 'customers' }),
     currentCustomer() {
       return this.$store.state.currentCustomer;
     },
