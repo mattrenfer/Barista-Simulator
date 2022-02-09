@@ -90,11 +90,6 @@ export default {
       return this.$store.state.currentDrink;
     }
   },
-  watch: {
-    currentLevel(newValue) {
-      this.$emit("levelUp", newValue); // if the currentLevel changes, send that new value up to the parent component (App.vue) to send on down to Header.vue
-    },
-  },
 };
 </script>
 
