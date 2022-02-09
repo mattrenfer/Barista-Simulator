@@ -15,12 +15,12 @@
           {{ msg }}
         </p>
       </div>
-      <div v-for="coffee in coffees" :key="coffee.id" class="verticalButtons">
+      <div v-for="drink in drinks" :key="drink.id" class="verticalButtons">
         <button
-          @click="setSelectedCoffee(coffee.name, coffee.reqLevel)"
-          :class="{ locked: coffee.reqLevel > currentLevel }"
+          @click="setSelectedCoffee(drink.name, drink.reqLevel)"
+          :class="{ locked: drink.reqLevel > currentLevel }"
         >
-          {{ coffee.name }}
+          {{ drink.name }}
         </button>
       </div>
     </div>
@@ -36,7 +36,7 @@
 <script>
 import Pour from "@/components/Pour.vue";
 import BrewCarafe from "@/components/BrewCarafe.vue";
-import { coffeeData } from "@/shared/data/drinks.js";
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: "Brew",
@@ -47,13 +47,21 @@ export default {
   data() {
     return {
       currentLevel: this.$store.state.currentLevel,
-      coffees: coffeeData,
       selectedCoffee: "",
       brewCoffee: false, // pagination end
       msg: ""
     };
   },
+
+  async created(){
+    await this.loadDrinks();
+  },
+
   methods: {
+    ...mapActions([ 'getDrinksAction' ]),
+    async loadDrinks() {
+      await this.getDrinksAction();
+    },
     setSelectedCoffee(name, reqLevel) {
       if ( this.cups  > 0) {
         this.selectedCoffee = name;
@@ -71,6 +79,7 @@ export default {
       },
     },
   computed: {
+    ...mapState([ 'drinks' ]),
     level() {
       return this.$store.state.currentLevel;
     },

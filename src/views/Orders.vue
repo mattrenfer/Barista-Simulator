@@ -41,9 +41,8 @@
 
 <script>
 
-import { data } from "@/shared/data/customers.js";
 import { random } from "@/shared/constants/random.js";
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 
 export default {
@@ -82,8 +81,9 @@ export default {
   },
 
   methods: {
+    ...mapActions(['getCustomersAction']),
     async loadCustomers() {
-      this.customers = await data.getCustomers();
+      await this.getCustomersAction();
     },
     clockedIn() {
       this.$store.commit("clockedInDate", this.printDate());

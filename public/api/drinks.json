@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "name": "Regular",
+      "reqLevel": 1
+    },
+    {
+      "id": 2,
+      "name": "Mocha",
+      "reqLevel": 2
+    },
+    {
+      "id": 3,
+      "name": "Espresso",
+      "reqLevel": 5
+    },
+    {
+      "id": 4,
+      "name": "Latte",
+      "reqLevel": 10
+    }
+  ]

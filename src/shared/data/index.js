@@ -8,6 +8,15 @@ const getCustomers = async function () {
   return customers;
 }
 
+const getDrinks = async function () {
+  const response = await axios.get('api/drinks.json');
+  const drinks = response.data.map(d => {
+    return d;
+  })
+  return drinks;
+}
+
 export const data = {
   getCustomers,
+  getDrinks,
 };

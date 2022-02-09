@@ -1,21 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { data } from "@/shared/data";
+
+import { GET_CUSTOMERS } from "./mutation-types";
+import { GET_DRINKS } from "./mutation-types";
+
 
 Vue.use(Vuex);
 
 const state = { 
-  customers: [{
-    "id": 1,
-    "name": "Jo Mugsy",
-    "order": "Hello, I'd like a coffee, please.",
-    "drink": [
-      "Regular",
-      "Espresso",
-      "Mocha",
-      "Latte"
-    ],
-    "tip": 0.25
-  }],
+  customers: [],
+  drinks: [],
   currentLevel: 1,
   currentTips: 0,
   clockedInDate: '',
@@ -61,9 +56,32 @@ const mutations = {
     state.currentTips -= state.carafePrice;
     state.carafePrice *= 2;
   },
+
+
+  // new axios data mutations
+
+  [GET_CUSTOMERS](state, customers) {
+    state.customers = customers;
+  },
+
+  [GET_DRINKS](state, drinks) {
+    state.drinks = drinks;
+  }
+
 };
 
-const actions = { };
+const actions = {
+    async getCustomersAction({commit}) {
+      const customers = await data.getCustomers();
+      commit(GET_CUSTOMERS, customers)
+    },
+    async getDrinksAction({commit}) {
+      const drinks = await data.getDrinks();
+      commit(GET_DRINKS, drinks)
+    }
+ };
+
+
 const getters = { };
 
 export default new Vuex.Store({
