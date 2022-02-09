@@ -25,13 +25,13 @@
       <br /> 
       <br />
       <div class="selection">
-        <button @click="serveDrink()">
+        <button @click="serveDrink()" v-if="!showNextButton">
           Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small">mdi-coffee</v-icon>
         </button>
         <button @click="customerNext()" v-if="showNextButton">
           NEXT!&nbsp;
         </button>
-        <button @click="customerRandom()">
+        <button @click="customerRandom()" v-if="!showNextButton">
           Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
         </button>
       </div>
