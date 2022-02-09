@@ -24,11 +24,23 @@ const state = {
 };
 
 const mutations = {
+
+  loadStateFromLocalStore(state) {
+    if (localStorage.getItem('currentLevel')) {
+      state.currentLevel = localStorage.getItem('currentLevel');    // if there's a value for currentLevel in localStorage, set it to the state's currentLevel
+    }
+    if (localStorage.getItem('currentTips')) {
+      state.currentTips = localStorage.getItem('currentTips');
+    }
+  },
+
   levelUp(state) {
-    state.currentLevel++;
+    state.currentLevel++
+    localStorage.setItem('currentLevel', state.currentLevel);    // level up, adding to vuex & local store
   },
   getTip(state, tip) {
     state.currentTips += tip;
+    localStorage.setItem('currentTips', state.currentTips);
   },
   clockedInDate(state, date) {
     state.clockedInDate = date;
@@ -66,7 +78,11 @@ const mutations = {
 
   [GET_DRINKS](state, drinks) {
     state.drinks = drinks;
-  }
+  },
+
+  // getLevel(level) {
+  //   state.currentLevel = level;
+  // }
 
 };
 
@@ -78,7 +94,11 @@ const actions = {
     async getDrinksAction({commit}) {
       const drinks = await data.getDrinks();
       commit(GET_DRINKS, drinks)
-    }
+    },
+    // getLevelAction({commit}) {
+    //   const level = localStorage.getItem('currentLevel');
+    //   commit('getLevel', level)
+    // }
  };
 
 

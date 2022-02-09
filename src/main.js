@@ -10,5 +10,6 @@ new Vue({
   router,
   vuetify,
   store,
+  beforeCreate() { this.$store.commit('loadStateFromLocalStore');},
   render: h => h(App)
 }).$mount('#app')
