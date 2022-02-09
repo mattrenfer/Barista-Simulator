@@ -9,14 +9,6 @@
         <p v-else>DONE POURING {{ currentDrink }}</p>
         
       </div>
-      <!-- <div class="selection" v-show="drinkDone">
-        <button class="uiButtons" @click="levelUp()">Drink coffee!</button>
-      </div>
-      <div class="selection" v-show="showDrankCoffee">
-        <button class="uiButtons" @click="resetIt()">
-          Let's brew some more!
-        </button>
-      </div> -->
     </div>
   </div>
 </template>
@@ -53,10 +45,6 @@ export default {
       this.drinkDone = timerDone;
       this.$store.commit("pourCoffee");
       this.$store.commit("currentDrink", this.selectedCoffee);
-    },
-    levelUp() {
-      this.$store.commit("levelUp");
-      console.log(this.$store.state.currentLevel);
     },
   },
 };
