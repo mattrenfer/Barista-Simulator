@@ -32,6 +32,12 @@ const mutations = {
     if (localStorage.getItem('currentTips')) {
       state.currentTips = localStorage.getItem('currentTips');
     }
+    if (localStorage.getItem('currentCarafe')) {
+      state.currentCarafe = localStorage.getItem('currentCarafe');
+    }
+    if (localStorage.getItem('carafePrice')) {
+      state.carafePrice = localStorage.getItem('carafePrice');
+    }
   },
 
   levelUp(state) {
@@ -65,8 +71,10 @@ const mutations = {
   },
   buyCarafe(state) {
     state.currentCarafe += 2;
+    localStorage.setItem('currentCarafe', state.currentCarafe);
     state.currentTips -= state.carafePrice;
     state.carafePrice *= 2;
+    localStorage.setItem('carafePrice', state.carafePrice);
   },
 
 
