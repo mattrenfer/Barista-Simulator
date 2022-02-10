@@ -1,6 +1,6 @@
 <template>
   <div class="brew">
-    <button class="uiButtons" @click="brewDone = false">Brew carafe!</button>
+    <button class="uiButtons" @click="brewDone = false">Brew carafe! (makes {{ currentCarafe }} cups)</button>
      <div class="descriptiveText">
         <p v-if="!brewDone">
           Brewing . . .<Countdown :countAmount="5" @isTimerDone="isBrewDone" /><br /><br />
@@ -37,6 +37,11 @@ export default {
       this.brewDone = timerDone;
       this.$store.commit("brewCoffee");
     },
+  },
+  computed: {
+    currentCarafe() {
+      return this.$store.state.currentCarafe;
+    }
   },
 };
 </script>
