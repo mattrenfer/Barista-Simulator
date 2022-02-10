@@ -41,7 +41,7 @@
 
 <script>
 
-import { random } from "@/shared/constants/random.js";
+import { random } from "@/shared/constants";
 import { mapState, mapActions } from 'vuex';
 
 
