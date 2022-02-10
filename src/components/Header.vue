@@ -7,6 +7,9 @@
 </template>
 
 <script>
+
+import { dollarAmount } from "@/shared/constants";
+
 export default {
   name: "Header",
   computed: {
@@ -14,7 +17,7 @@ export default {
       return this.$store.state.currentLevel;
     },
     currentTips() {
-      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(this.$store.state.currentTips);
+      return dollarAmount(this.$store.state.currentTips);
     },
   },
 };
