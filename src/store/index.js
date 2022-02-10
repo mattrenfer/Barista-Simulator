@@ -2,8 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { data } from "@/shared/data";
 
-import { GET_CUSTOMERS } from "./mutation-types";
-import { GET_DRINKS } from "./mutation-types";
+import { GET_CUSTOMERS, GET_DRINKS } from "./mutation-types";
 
 
 Vue.use(Vuex);
@@ -27,16 +26,16 @@ const mutations = {
 
   loadStateFromLocalStore(state) {
     if (localStorage.getItem('currentLevel')) {
-      state.currentLevel = localStorage.getItem('currentLevel');    // if there's a value for currentLevel in localStorage, set it to the state's currentLevel
+      state.currentLevel = parseInt(localStorage.getItem('currentLevel'));    // if there's a value for currentLevel in localStorage, set it to the state's currentLevel
     }
     if (localStorage.getItem('currentTips')) {
-      state.currentTips = localStorage.getItem('currentTips');
+      state.currentTips = parseFloat(localStorage.getItem('currentTips'));  // parseFloat converts strings to a decimal number
     }
     if (localStorage.getItem('currentCarafe')) {
-      state.currentCarafe = localStorage.getItem('currentCarafe');
+      state.currentCarafe = parseInt(localStorage.getItem('currentCarafe'));
     }
     if (localStorage.getItem('carafePrice')) {
-      state.carafePrice = localStorage.getItem('carafePrice');
+      state.carafePrice = parseInt(localStorage.getItem('carafePrice'));
     }
   },
 
