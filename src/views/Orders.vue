@@ -77,7 +77,11 @@ export default {
   },
 
   async created(){
-    await this.loadCustomers();
+    
+    if (!this.$store.state.currentCustomer) {
+        await this.loadCustomers(); // only load the customers from the json if there's no currentCustomer (initial load) so we can manipulate the customer vuex state
+    }
+
     if (!this.$store.state.currentCustomer) {
           this.customerRandom();
       }
@@ -98,9 +102,10 @@ export default {
       this.servePass = "";
       this.serveEmpty = "";
       let levelAppropCustomers = this.customers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
-      let num = random(0, levelAppropCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
-      console.log(JSON.stringify(levelAppropCustomers));
-      this.$store.commit("currentCustomer", levelAppropCustomers[num]); // find a random customer, store in state
+      let unServedCustomers = levelAppropCustomers.filter(customer => customer.servedToday === false);
+      let num = random(0, unServedCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
+      console.log(JSON.stringify(unServedCustomers));
+      this.$store.commit("currentCustomer", unServedCustomers[num]); // find a random customer, store in state
     },
     serveDrink() {
       console.log(this.$store.state.currentDrink);
@@ -118,6 +123,7 @@ export default {
       }
     },
     customerNext(){
+      this.$store.commit("serveCustomer");
       this.customerRandom();
       this.showNextButton = false;
     },
