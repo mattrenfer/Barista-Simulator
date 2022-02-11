@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "reqLevel": 1,
     "name": "Jo Mugsy",
     "order": "Hello, I'd like a coffee, please.",
     "drink": [
@@ -13,6 +14,7 @@
   },
   {
     "id": 2,
+    "reqLevel": 1,
     "name": "Jill Grind",
     "order": "I'll take a regular, thanks.",
     "drink": "Regular",
@@ -20,6 +22,7 @@
   },
   {
     "id": 3,
+    "reqLevel": 1,
     "name": "Jack Venti",
     "order": "Cup of joe for me.",
     "drink": "Regular",
@@ -27,6 +30,7 @@
   },
   {
     "id": 4,
+    "reqLevel": 1,
     "name": "Billy Bean",
     "order": "Surprise me.",
     "drink": [
@@ -39,6 +43,7 @@
   },
   {
     "id": 5,
+    "reqLevel": 3,
     "name": "Antonio Espresso",
     "order": "Guess what I like.",
     "drink": "Espresso",
@@ -46,6 +51,7 @@
   },
   {
     "id": 6,
+    "reqLevel": 2,
     "name": "Negative Ned",
     "order": "I'd like a Mocha, please",
     "drink": "Mocha",
@@ -53,6 +59,7 @@
   },
   {
     "id": 7,
+    "reqLevel": 2,
     "name": "Piper Peppermint",
     "order": "I'd like a Peppermint Mocha, please",
     "drink": "Mocha",
@@ -60,6 +67,7 @@
   },
   {
     "id": 8,
+    "reqLevel": 10,
     "name": "Tucker Tipswell",
     "order": "Latte love for me, please",
     "drink": "Latte",
@@ -67,6 +75,7 @@
   },
   {
     "id": 9,
+    "reqLevel": 2,
     "name": "Mary Mocha",
     "order": "How's your Mocha here?",
     "drink": "Mocha",
@@ -74,6 +83,7 @@
   },
   {
     "id": 10,
+    "reqLevel": 3,
     "name": "Easton Espresso",
     "order": "Figure me out",
     "drink": "Espresso",

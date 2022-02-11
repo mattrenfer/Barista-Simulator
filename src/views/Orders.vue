@@ -71,6 +71,9 @@ export default {
     clockedInTime() {
       return this.$store.state.clockedInTime;
     },
+    level() {
+      return this.$store.state.currentLevel;
+    },
   },
 
   async created(){
@@ -94,8 +97,10 @@ export default {
       this.serveFail = "";
       this.servePass = "";
       this.serveEmpty = "";
-      let num = random(0, this.customers.length); // makes the random min max equal 0 through the length of an array
-      this.$store.commit("currentCustomer", this.customers[num]); // find a random customer, store in state, and interpolate their name and number
+      let levelAppropCustomers = this.customers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
+      let num = random(0, levelAppropCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
+      console.log(JSON.stringify(levelAppropCustomers));
+      this.$store.commit("currentCustomer", levelAppropCustomers[num]); // find a random customer, store in state
     },
     serveDrink() {
       console.log(this.$store.state.currentDrink);
