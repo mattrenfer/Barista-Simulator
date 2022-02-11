@@ -60,7 +60,7 @@ const mutations = {
     state.currentCustomer = customer;
   },
   serveCustomer(state) {
-    state.currentCustomer.servedToday = true;
+    state.currentCustomer.served = true;
   },
   currentDrink(state, drink) {
     state.currentDrink = drink;

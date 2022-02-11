@@ -11,7 +11,7 @@
       "Latte"
     ],
     "tip": 0.25,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 2,
@@ -20,7 +20,7 @@
     "order": "I'll take a regular, thanks.",
     "drink": "Regular",
     "tip": 0.1,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 3,
@@ -29,7 +29,7 @@
     "order": "Cup of joe for me.",
     "drink": "Regular",
     "tip": 0.05,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 4,
@@ -43,7 +43,7 @@
       "Latte"
     ],
     "tip": 0.05,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "order": "Guess what I like.",
     "drink": "Espresso",
     "tip": 0.3,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 6,
@@ -61,7 +61,7 @@
     "order": "I'd like a Mocha, please",
     "drink": "Mocha",
     "tip": 0.1,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 7,
@@ -70,7 +70,7 @@
     "order": "I'd like a Peppermint Mocha, please",
     "drink": "Mocha",
     "tip": 0.25,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 8,
@@ -79,7 +79,7 @@
     "order": "Latte love for me, please",
     "drink": "Latte",
     "tip": 1,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 9,
@@ -88,7 +88,7 @@
     "order": "How's your Mocha here?",
     "drink": "Mocha",
     "tip": 0.5,
-    "servedToday": false
+    "served": false
   },
   {
     "id": 10,
@@ -97,6 +97,6 @@
     "order": "Figure me out",
     "drink": "Espresso",
     "tip": 0.3,
-    "servedToday": false
+    "served": false
   }
 ]

@@ -25,13 +25,13 @@
       <br /> 
       <br />
       <div class="selection">
-        <button @click="serveDrink()" v-if="!showNextButton">
+        <button @click="serveDrink()" v-if="!this.currentCustomer.served">
           Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small">mdi-coffee</v-icon>
         </button>
-        <button @click="customerNext()" v-if="showNextButton">
+        <button @click="customerNext()" v-if="this.currentCustomer.served">
           NEXT!&nbsp;
         </button>
-        <button @click="customerRandom()" v-if="!showNextButton">
+        <button @click="customerRandom()" v-if="!this.currentCustomer.served">
           Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
         </button>
       </div>
@@ -52,7 +52,6 @@ export default {
       serveFail: false,
       servePass: false,
       serveEmpty: false,
-      showNextButton: false,
     };
   },
 
@@ -102,7 +101,7 @@ export default {
       this.servePass = "";
       this.serveEmpty = "";
       let levelAppropCustomers = this.customers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
-      let unServedCustomers = levelAppropCustomers.filter(customer => customer.servedToday === false);
+      let unServedCustomers = levelAppropCustomers.filter(customer => customer.served === false);
       let num = random(0, unServedCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
       console.log(JSON.stringify(unServedCustomers));
       this.$store.commit("currentCustomer", unServedCustomers[num]); // find a random customer, store in state
@@ -113,9 +112,9 @@ export default {
         this.$store.commit("levelUp");
         this.$store.commit("getTip", this.$store.state.currentCustomer.tip);         // tip the Barista!
         this.$store.commit("currentDrink", '');    // reset the currentDrink
+        this.$store.commit("serveCustomer"); // set current customer's served to true
         this.servePass = true;
         this.serveEmpty = "";
-        this.showNextButton = "true";
       } else if (this.currentDrink === "") {
         this.serveEmpty = true;
       } else {
@@ -123,9 +122,7 @@ export default {
       }
     },
     customerNext(){
-      this.$store.commit("serveCustomer");
       this.customerRandom();
-      this.showNextButton = false;
     },
     printDate: function () {
       return new Date().toLocaleDateString();
