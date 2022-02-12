@@ -10,17 +10,10 @@
         <p :key="2">{{ currentCustomer.name }}</p>
         <p :key="3">&quot;<em>{{ currentCustomer.order }}</em>&quot;</p>
       </transition-group>
-       <p>{{ msg }}</p>
-      <br /> 
-      <div class="descriptiveText" v-if="serveEmpty">
-        &quot;You haven't made me a drink yet. Get brewin'!&quot;
-      </div>
-      <div class="descriptiveText" v-if="serveFail">
-        &quot;That's not even a little bit close to what I ordered. Try again?&quot;
-      </div>
-       <div class="descriptiveText" v-if="servePass">
-        &quot;YUM. Thanks for the drink!&quot;
-        
+      <div class="descriptiveText">
+      <br />
+      <p>{{ msg }}</p>
+      <p>{{ serveMsg }}</p>
       </div>
       <br /> 
       <br />
@@ -53,7 +46,8 @@ export default {
       servePass: false,
       serveEmpty: false,
       dayDone: false,
-      msg: ''
+      msg: '',
+      serveMsg: ''
     };
   },
 
@@ -98,9 +92,7 @@ export default {
       this.$store.commit("clockedIn");
     },
     customerRandom() {
-      this.serveFail = "";
-      this.servePass = "";
-      this.serveEmpty = "";
+      this.serveMsg = "";
       const checkCustomerServed = customer => customer.served === false;     // check if any unserved customers exist
       if (this.customers.some(checkCustomerServed)) {
         let unServedCustomers = this.customers.filter(customer => customer.served === false);
@@ -119,14 +111,13 @@ export default {
         this.$store.commit("getTip", this.$store.state.currentCustomer.tip);         // tip the Barista!
         this.$store.commit("currentDrink", '');    // reset the currentDrink
         this.$store.commit("serveCustomer"); // set current customer's served to true
-        this.servePass = true;
-        this.serveEmpty = "";
+        this.serveMsg = "YUM. Thanks for the drink!";
       } else if (this.currentDrink === "") {
-        this.serveEmpty = true;
+        this.serveMsg = "You haven't made me a drink yet. Get brewin";
       } else {
-        this.serveFail = true;
+        this.serveMsg = "That's not even a little bit close to what I ordered. Try again?";
       }
-    },
+    },      
     customerNext(){
       this.customerRandom();
     },

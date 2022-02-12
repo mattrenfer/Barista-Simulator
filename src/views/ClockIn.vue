@@ -16,12 +16,6 @@
 
 export default {
   name: "ClockIn",
-  data() {
-    return {
-      coffeeShopAmbience: '@/assets/sound/morning-murmur.mp3'
-    }
-  },
-  
   computed: {
     clockedInDate() {
       return this.$store.state.clockedInDate;
