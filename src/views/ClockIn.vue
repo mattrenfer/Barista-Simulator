@@ -16,6 +16,11 @@
 
 export default {
   name: "ClockIn",
+  data() {
+    return {
+      coffeeShopAmbience: '@/assets/sound/morning-murmur.mp3'
+    }
+  },
   
   computed: {
     clockedInDate() {
@@ -35,7 +40,9 @@ export default {
     clockOut() {
       //this.$store.commit("clockedInDate", this.printDate());   // needs clock out time
       //this.$store.commit("clockedInTime", this.printTime());   // needs clock out time
+      
       this.$store.commit("clockedIn", false);
+      this.$store.commit("currentCustomer", null);
     },
     
     printDate: function () {
