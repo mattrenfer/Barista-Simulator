@@ -1,20 +1,41 @@
 <template>
-    <div class="settings">
-      <h2>Coffee Shop...Shop</h2>
-      <br /><br />
-      <button @click="buyCarafe"><h3>Buy a better carafe (makes 2 more cups): {{ convertedCarafePrice }}</h3></button>
-      
-      <br />
-    </div>
+<v-container>
+  <h2>Coffee Shop...Shop</h2><br />
+  <v-row justify="space-around">
+  <v-col>
+    <v-sheet color="#37251b" elevation="24" rounded height="375"><h2>Upgrade Carafe</h2><br /><p>Makes 2 more cups per upgrade.<br />Currently makes {{ currentCarafe }} cups per brew. </p><br /><h3> {{ convertedCarafePrice }}</h3><button @click="buyCarafe"><h3>Buy </h3></button></v-sheet>
+  </v-col>
+  <v-col>
+    <v-sheet v-if="!chalkBoard" color="#37251b" elevation="24" rounded height="375"><h2>Double-sided chalkboard stand</h2><br /><p>Attracts big tip tourists.</p><br /><h3> {{ convertedChalkBoardPrice }}</h3><button @click="buyChalkBoard"><h3>Buy</h3></button></v-sheet>
+
+  </v-col>
+  </v-row>
+</v-container>
 </template>
 
 <script>
+
+import { dollarAmount } from "@/shared/constants";
+
     export default {
         name: "Shop",
+        data() {
+          return {
+            chalkBoardPrice: 5,
+          }
+        },
         methods: {
             buyCarafe() {
                 if (this.currentTips >= this.carafePrice) {
                     this.$store.commit("buyCarafe");
+                }
+                else {
+                    console.log("Not Enough Tips!");
+                }
+            },
+            buyChalkBoard() {
+                if (this.currentTips >= this.chalkBoardPrice) {
+                    this.$store.commit("buyChalkBoard", this.chalkBoardPrice);
                 }
                 else {
                     console.log("Not Enough Tips!");
@@ -26,10 +47,19 @@
               return this.$store.state.carafePrice;
             },
             convertedCarafePrice(){
-              return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(this.$store.state.carafePrice);
+              return dollarAmount(this.$store.state.carafePrice);
+            },
+            convertedChalkBoardPrice(){
+              return dollarAmount(this.chalkBoardPrice);
+            },
+            chalkBoard() {
+              return this.$store.state.chalkBoard;
             },
             currentTips(){
               return this.$store.state.currentTips;
+            },
+            currentCarafe() {
+              return this.$store.state.currentCarafe;
             },
         },
     };
@@ -37,5 +67,9 @@
 </script>
 
 <style lang="scss" scoped>
+
+.v-sheet {
+  padding: 25px;
+}
 
 </style>

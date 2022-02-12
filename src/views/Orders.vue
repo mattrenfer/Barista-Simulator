@@ -28,6 +28,10 @@
           Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
         </button>
       </div>
+
+      <div v-if="chalkBoard" class="mt-16">
+         <img src="@/assets/imgs/chalkboard-stand.png" width="30%" height="30%" />
+      </div>
     </div>
   </div>
 </template>
@@ -68,6 +72,9 @@ export default {
     level() {
       return this.$store.state.currentLevel;
     },
+    chalkBoard() {
+      return this.$store.state.chalkBoard;
+    },
   },
 
   async created(){
@@ -93,7 +100,13 @@ export default {
     },
     customerRandom() {
       this.serveMsg = "";
-      let levelAppropCustomers = this.customers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
+      let newCustomerPool = this.customers;
+      
+      if ( this.chalkBoard === false) {
+        newCustomerPool = this.customers.filter(customer => customer.tourist === undefined);     // new array with only non tourists if the chalkboard isn't purchased
+      }
+      console.log(JSON.stringify(newCustomerPool))
+      let levelAppropCustomers = newCustomerPool.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
       const checkCustomerServed = customer => customer.served === false;     // check if any unserved customers exist
       if (levelAppropCustomers.some(checkCustomerServed)) {
         let unServedCustomers = levelAppropCustomers.filter(customer => customer.served === false);

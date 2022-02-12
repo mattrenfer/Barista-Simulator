@@ -20,6 +20,7 @@ const state = {
   currentCarafe: 4,
   currentCups: 0,
   carafePrice: 1,
+  chalkBoard: false,
 };
 
 const mutations = {
@@ -36,6 +37,9 @@ const mutations = {
     }
     if (localStorage.getItem('carafePrice')) {
       state.carafePrice = parseInt(localStorage.getItem('carafePrice'));
+    }
+    if (localStorage.getItem('chalkBoard')) {
+      state.chalkBoard = localStorage.getItem('chalkBoard');
     }
   },
 
@@ -77,6 +81,11 @@ const mutations = {
     state.currentTips -= state.carafePrice;
     state.carafePrice *= 2;
     localStorage.setItem('carafePrice', state.carafePrice);
+  },
+  buyChalkBoard(state, price) {
+    state.chalkBoard = true;
+    localStorage.setItem('chalkBoard', state.chalkBoard);
+    state.currentTips -= price;
   },
 
 

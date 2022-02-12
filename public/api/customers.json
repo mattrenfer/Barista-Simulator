@@ -98,5 +98,15 @@
     "drink": "Espresso",
     "tip": 0.3,
     "served": false
+  },
+  {
+    "id": 11,
+    "reqLevel": 10,
+    "name": "Tammy Tourist",
+    "order": "Absolutely love what you've done with the place. I'll have what's on your stand. A vanilla Latte, please.",
+    "drink": "Latte",
+    "tip": 2,
+    "served": false,
+    "tourist": true
   }
 ]
