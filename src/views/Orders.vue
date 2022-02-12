@@ -5,13 +5,12 @@
       You have no orders. Clock in first!
     </div>
     <div class="descriptiveText" v-if="this.$store.state.clockedIn">
-      <p>A customer approaches...</p>
-      <br />
-      <transition-group name="fadeIn" appear>
+      <transition-group name="fadeIn" appear v-if="!dayDone">
         <v-icon :key="1">mdi-account</v-icon>
         <p :key="2">{{ currentCustomer.name }}</p>
         <p :key="3">&quot;<em>{{ currentCustomer.order }}</em>&quot;</p>
       </transition-group>
+       <p>{{ msg }}</p>
       <br /> 
       <div class="descriptiveText" v-if="serveEmpty">
         &quot;You haven't made me a drink yet. Get brewin'!&quot;
@@ -21,6 +20,7 @@
       </div>
        <div class="descriptiveText" v-if="servePass">
         &quot;YUM. Thanks for the drink!&quot;
+        
       </div>
       <br /> 
       <br />
@@ -52,9 +52,10 @@ export default {
       serveFail: false,
       servePass: false,
       serveEmpty: false,
+      dayDone: false,
+      msg: ''
     };
   },
-
 
   computed: {
     ...mapState( { customers: 'customers' }),
@@ -100,11 +101,16 @@ export default {
       this.serveFail = "";
       this.servePass = "";
       this.serveEmpty = "";
-      let levelAppropCustomers = this.customers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
-      let unServedCustomers = levelAppropCustomers.filter(customer => customer.served === false);
-      let num = random(0, unServedCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
-      console.log(JSON.stringify(unServedCustomers));
-      this.$store.commit("currentCustomer", unServedCustomers[num]); // find a random customer, store in state
+      const checkCustomerServed = customer => customer.served === false;     // check if any unserved customers exist
+      if (this.customers.some(checkCustomerServed)) {
+        let unServedCustomers = this.customers.filter(customer => customer.served === false);
+        let levelAppropCustomers = unServedCustomers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
+        let num = random(0, levelAppropCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
+        this.$store.commit("currentCustomer", levelAppropCustomers[num]); // find a random customer, store in state
+      } else {
+        this.dayDone = true;
+        this.msg = 'All customers served! Clock out and in to serve more!'
+      }
     },
     serveDrink() {
       console.log(this.$store.state.currentDrink);
