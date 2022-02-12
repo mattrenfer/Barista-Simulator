@@ -17,14 +17,14 @@
       </div>
       <br /> 
       <br />
-      <div class="selection">
+      <div class="selection" v-show="!dayDone">
         <button @click="serveDrink()" v-if="!this.currentCustomer.served">
           Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small">mdi-coffee</v-icon>
         </button>
         <button @click="customerNext()" v-if="this.currentCustomer.served">
           NEXT!&nbsp;
         </button>
-        <button @click="customerRandom()" v-if="!this.currentCustomer.served">
+        <button @click="refuseCustomer()" v-if="!this.currentCustomer.served">
           Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
         </button>
       </div>
@@ -93,12 +93,12 @@ export default {
     },
     customerRandom() {
       this.serveMsg = "";
+      let levelAppropCustomers = this.customers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
       const checkCustomerServed = customer => customer.served === false;     // check if any unserved customers exist
-      if (this.customers.some(checkCustomerServed)) {
-        let unServedCustomers = this.customers.filter(customer => customer.served === false);
-        let levelAppropCustomers = unServedCustomers.filter(customer => customer.reqLevel <= this.level); // loop through customers, find those less than or equal to current level
-        let num = random(0, levelAppropCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
-        this.$store.commit("currentCustomer", levelAppropCustomers[num]); // find a random customer, store in state
+      if (levelAppropCustomers.some(checkCustomerServed)) {
+        let unServedCustomers = levelAppropCustomers.filter(customer => customer.served === false);
+        let num = random(0, unServedCustomers.length); // makes the random min max equal 0 through the length of level appropriate customers
+        this.$store.commit("currentCustomer", unServedCustomers[num]); // find a random customer, store in state
       } else {
         this.dayDone = true;
         this.msg = 'All customers served! Clock out and in to serve more!'
@@ -117,7 +117,11 @@ export default {
       } else {
         this.serveMsg = "That's not even a little bit close to what I ordered. Try again?";
       }
-    },      
+    },
+    refuseCustomer() {
+      this.$store.commit("serveCustomer");
+      this.customerRandom();
+    },     
     customerNext(){
       this.customerRandom();
     },
