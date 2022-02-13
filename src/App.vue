@@ -77,9 +77,7 @@
       </v-list>
     </v-navigation-drawer> -->
 
-    <v-app-bar app>
-      <Header />
-    </v-app-bar>
+
 
     <v-main>
       <router-view />
@@ -95,14 +93,10 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
 import { version } from '../package.json';
 
 export default {
   name: "App",
-  components: {
-    Header,
-  },
   data() {
     return {
       versionNumber: version,

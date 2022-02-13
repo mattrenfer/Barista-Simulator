@@ -116,6 +116,7 @@
               </v-card>
 
               <v-system-bar dark color="indigo darken-2">
+                Tips: {{ currentTips }}
                 <v-spacer></v-spacer>
                 <v-icon>mdi-wifi-strength-4</v-icon>
                 <v-icon>mdi-signal-cellular-outline</v-icon>
@@ -144,6 +145,7 @@ import ClockIn from "@/views/ClockIn.vue";
 import Shop from "@/views/Shop.vue";
 import { random } from "@/shared/constants";
 import { mapState, mapActions } from "vuex";
+import { dollarAmount } from "@/shared/constants";
 
 export default {
   name: "Orders",
@@ -183,6 +185,9 @@ export default {
     },
     cups() {
       return this.$store.state.currentCups;
+    },
+    currentTips() {
+      return dollarAmount(this.$store.state.currentTips);
     },
   },
 
