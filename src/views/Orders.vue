@@ -1,18 +1,18 @@
 <template>
   <v-app>
-    <div class="text-center">
+    <div class="nav-button-left">
       <router-link to="/brew">
-        <v-btn fab dark color="black"
-          >Brew<br />
-          <v-icon class="nav-arrow" dark> mdi-arrow-down-thick </v-icon>
-        </v-btn>
+          <span class="nav-button-text">Brew</span><br />
+          <v-icon class="nav-arrow" dark> mdi-arrow-left-thick </v-icon>
+      </router-link>
+    </div>
+    <div class="nav-button-right">
+      <router-link to="/brew">
+          <span class="nav-button-text">Brew</span><br />
+          <v-icon class="nav-arrow" dark> mdi-arrow-right-thick </v-icon>
       </router-link>
     </div>
     <div class="orders">
-      <h1 class="viewTitle">Orders</h1>
-      <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-        You have no orders. Clock in first!
-      </div>
       <div class="descriptiveText" v-if="this.$store.state.clockedIn">
       <!-- "Customer" component -->
         <transition-group name="fadeIn" appear v-if="!dayDone">
@@ -24,8 +24,7 @@
           <v-icon class="customer" :key="1">mdi-account</v-icon>
         </transition-group>
         <!-- End "Customer" component -->
-        <v-card color="#37251b" height="100"></v-card>
-        <div class="descriptiveText">
+        <!-- <div class="descriptiveText">
           <p>{{ msg }}</p>
           <p>{{ serveMsg }}</p>
         </div>
@@ -43,16 +42,22 @@
           <button @click="refuseCustomer()" v-if="!this.currentCustomer.served">
             Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
           </button>
-        </div>
+        </div> -->
       </div>
 
+     <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
+        You have no orders. Clock in first!
+         
+      </div>
+
+      <v-card color="#37251b" height="100"></v-card>
       <!-- "Screen" component -->
 
       <v-container class="mt-16">
-        <v-row justify-content="center">
+        <v-row>
           <v-col>
-            <v-sheet color="#2a2a2a" elevation="24" rounded="xl" height="375">
-              <v-card color="basil">
+            <v-sheet color="#2a2a2a" elevation="24" rounded="xl" width="75%" class="screen">
+              <v-card color="basil" height="500" rounded="xl">
                 <v-tabs
                   v-model="tab"
                   background-color="transparent"
@@ -123,7 +128,7 @@
                 <v-icon>mdi-battery</v-icon>
                 <span>12:30</span>
               </v-system-bar>
-            </v-sheet>
+            </v-sheet> 
           </v-col>
         </v-row>
       </v-container>
@@ -282,6 +287,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
+// #app {
+//   background-image: url(../assets/imgs/orders-bg.jpg) !important;
+//   background-size:auto;
+//   background-repeat: no-repeat;
+//   background-position-y: -800px;
+// }
+
+
 .v-icon.v-icon {
   font-size: 100px !important;
 }
@@ -293,10 +308,6 @@ export default {
 .v-icon.v-icon.customer {
   position: relative; //positions customer closer to table
   top: 17px;
-}
-
-.v-icon.v-icon.nav-arrow {
-  font-size: 25px !important;
 }
 
 /* Animation Styles */
@@ -320,4 +331,38 @@ export default {
 .basil--text {
   color: #356859 !important;
 }
+
+
+
+/* Left & Right Nav Buttons */
+
+.v-icon.v-icon.nav-arrow {
+  font-size: 25px !important;
+}
+
+.nav-button-left, .nav-button-right {
+  position: absolute;
+  top: 50%;
+}
+
+.nav-button-right {
+  right: 0;
+}
+
+.nav-button-text {
+  display: none;
+}
+
+.nav-button-text:hover {
+  display:inline;
+}
+
+
+/* Screen Styles */
+
+.screen {
+  margin: auto;
+}
+
+
 </style>

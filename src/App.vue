@@ -140,10 +140,6 @@ export default {
   height: auto !important;
 }
 
-.v-main {
-  margin-top: 30px;
-}
-
 .v-system-bar {
   height: 30px !important;
 }
