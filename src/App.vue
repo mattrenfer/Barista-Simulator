@@ -1,6 +1,9 @@
 <template>
   <v-app>
-    <v-navigation-drawer
+
+    
+
+    <!-- <v-navigation-drawer
       mini-variant-width="65"
       v-model="drawer"
       :mini-variant.sync="mini"
@@ -72,7 +75,7 @@
         </router-link>
 
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
 
     <v-app-bar app>
       <Header />
@@ -118,7 +121,6 @@ export default {
 <style>
 #app {
   background-color: #172331;
-  background-image: url(assets/imgs/beans-after-1.png);
   background-size: auto;
   background-repeat: repeat-y;
   background-position-x: right;

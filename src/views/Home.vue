@@ -14,8 +14,10 @@
         You can also drink your brewed drinks, giving you a caffine boost! Your
         caffine level determines how fast you brew drinks.
       </p> -->
-      <p>Earn cash through your <strong>tips</strong> and crappy minimum wage to have a life outside of your barista job and stuff.</p>
+      <p>Earn cash through your <strong>tips</strong> and crappy minimum wage to have a life outside of your barista job and stuff.</p><br />
+      <router-link to="/orders"><button>Start</button></router-link>
     </div>
+    
   </transition>
 </template>
 
