@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="nav-button-right">
-      <router-link to="/brew">
+      <router-link to="/orders">
           <span class="nav-button-text">Orders</span><br />
           <v-icon class="nav-arrow" dark> mdi-arrow-right-thick </v-icon>
       </router-link>
