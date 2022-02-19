@@ -1,10 +1,11 @@
 <template>
   <div class="brew">
+     <img v-show="currentCups === 0" src="@/assets/imgs/coffee-maker-no-coffee.png" width="30%" height="30%" />
+     <img v-show="currentCups > 0" src="@/assets/imgs/coffee-maker.png" width="30%" height="30%" />
     <button class="uiButtons" @click="brewDone = false">Brew carafe! (makes {{ currentCarafe }} cups)</button>
      <div class="descriptiveText">
         <p v-if="!brewDone">
           Brewing . . .<Countdown :countAmount="5" @isTimerDone="isBrewDone" /><br /><br />
-          <img src="@/assets/imgs/coffee-pot.png" width="30%" height="30%" />
         </p>
         
     </div>
@@ -41,7 +42,10 @@ export default {
   computed: {
     currentCarafe() {
       return this.$store.state.currentCarafe;
-    }
+    },
+    currentCups() {
+      return this.$store.state.currentCups;
+    },
   },
 };
 </script>
