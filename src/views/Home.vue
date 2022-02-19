@@ -15,15 +15,26 @@
         caffine level determines how fast you brew drinks.
       </p> -->
       <p>Earn cash through your <strong>tips</strong> and crappy minimum wage to have a life outside of your barista job and stuff.</p><br />
-      <router-link to="/orders"><button>Start</button></router-link>
+      <router-link to="/orders"><button @click="play">Start</button></router-link>
     </div>
     
   </transition>
 </template>
 
 <script>
+
+import useSound from 'vue-use-sound'
+import coffeeAmbiance from '@/assets/sound/morning-murmur.mp3'
+
 export default {
   name: "Home",
+  setup() {
+    const [play] = useSound(coffeeAmbiance, {volume: 0.05})
+
+    return {
+      play,
+    }
+  },
 };
 </script>
 
