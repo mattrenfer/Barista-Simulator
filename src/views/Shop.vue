@@ -3,10 +3,10 @@
   <h2>Coffee Shop...Shop</h2><br />
   <v-row justify="space-around">
   <v-col>
-    <v-sheet color="#37251b" elevation="24" rounded height="375"><h2>Upgrade Carafe</h2><br /><p>Makes 2 more cups per upgrade.<br />Currently makes {{ currentCarafe }} cups per brew. </p><br /><h3> {{ convertedCarafePrice }}</h3><button @click="buyCarafe"><h3>Buy </h3></button></v-sheet>
+    <v-sheet color="#37251b" elevation="24" rounded height="265"><h2>Upgrade Carafe</h2><br /><p>Makes 2 more cups per upgrade.<br />Currently makes {{ currentCarafe }} cups per brew. </p><br /><h3> {{ convertedCarafePrice }}</h3><button @click="buyCarafe"><h3>Buy </h3></button></v-sheet>
   </v-col>
   <v-col>
-    <v-sheet v-if="!chalkBoard" color="#37251b" elevation="24" rounded height="375"><h2>Double-sided chalkboard stand</h2><br /><p>Attracts big tip tourists.</p><br /><h3> {{ convertedChalkBoardPrice }}</h3><button @click="buyChalkBoard"><h3>Buy</h3></button></v-sheet>
+    <v-sheet v-if="!chalkBoard" color="#37251b" elevation="24" rounded height="265"><h2>Double-sided chalkboard stand</h2><br /><p>Attracts big tip tourists.</p><br /><h3> {{ convertedChalkBoardPrice }}</h3><button @click="buyChalkBoard"><h3>Buy</h3></button></v-sheet>
 
   </v-col>
   </v-row>
