@@ -80,7 +80,14 @@
 
 
     <v-main>
+
+      <transition
+      mode="out-in"
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__backOutLeft"
+      > 
       <router-view />
+      </transition>
     </v-main>
 
     <v-system-bar color="#37251b" lights-out>
