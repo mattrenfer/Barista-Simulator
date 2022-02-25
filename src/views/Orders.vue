@@ -49,11 +49,13 @@
 
       <div class="bot-50">
 
-        <div id="dialogueArea">
+        <div class="messageArea">
 
-       <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-          You have no orders. Clock in first!
+         <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
+            You have no orders. Clock in first!
         </div>
+        </div>
+        <div id="dialogueArea">
 
       <div v-show="this.$store.state.clockedIn && screenUp===false">
         <!-- Serve Buttons -->
@@ -89,9 +91,9 @@
             elevation="24"
             rounded="xl"
             width="75%"
-            class="screen"
+            class="screenBg"
           >
-            <v-card color="basil" rounded="xl">
+            <v-card color="basil" rounded="xl" class="vcard">
               <v-tabs
                 v-model="tab"
                 background-color="transparent"
@@ -152,6 +154,8 @@
                   </v-card>
                 </v-tab-item>
               </v-tabs-items>
+
+
             </v-card>
 
             <v-system-bar dark color="indigo darken-2">
@@ -164,6 +168,8 @@
               <v-icon>mdi-battery</v-icon>
               <span>12:30</span>
             </v-system-bar>
+
+
           </v-sheet>
         </div>
       </div>
@@ -401,7 +407,6 @@ export default {
 }
 
 .top-50 {
-  height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -414,12 +419,11 @@ export default {
 }
 
 .customerLine {
-  flex-grow: 0.75;
-  height: 40%;
+  height: 110px;
 }
 
 .counter {
-  height: 60%;
+  height: 165px;
   flex-grow: 1;
 }
 
@@ -428,18 +432,33 @@ export default {
   background-repeat: repeat-x;
 }
 
+.messageArea {
+  height: 25px;
+  padding: 25px;
+}
+
 .screen {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.5%;
-  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.screenBg {
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #screenImg {
   position: absolute;
-  left: 58%;
-  top: 6%;
+  top: 65px;
+  left: 56%;
   z-index: 50;
   opacity: 0.9;
 }
@@ -447,4 +466,23 @@ export default {
 #screenImg:hover {
   opacity: 1;
 }
+
+.vcard {
+  flex-grow: 1;
+}
+
 </style>
+
+<style lang="scss">
+
+// adds scrollbar to tabs window (but globally, so be careful)
+
+.v-window__container--is-active {
+  overflow-y: auto !important;
+}
+
+
+</style>
+
+
+
