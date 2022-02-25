@@ -15,7 +15,7 @@
 
     <img
       id="screenImg"
-      @click="screenUp = true"
+      @click="toggleScreen()"
       src="@/assets/imgs/register-small.png"
     />
 
@@ -52,8 +52,14 @@
         <div class="messageArea">
 
          <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-            You have no orders. Clock in first!
+            You have no orders. Clock in at the register first!
         </div>
+
+          <p id="customerOrder" v-show="this.$store.state.clockedIn">
+            &quot;<em>{{ currentCustomer.order }}</em
+            >&quot;
+          </p>
+
         </div>
         <div id="dialogueArea">
 
@@ -63,12 +69,6 @@
             <p>{{ msg }}</p>
             <p>{{ serveMsg }}</p>
           </div>
-          <br />
-          <p id="customerOrder">
-            &quot;<em>{{ currentCustomer.order }}</em
-            >&quot;
-          </p>
-          <br />
           <div class="selection" v-show="!dayDone">
             <button @click="serveDrink()" v-if="!this.currentCustomer.served">
               Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small"
@@ -296,11 +296,13 @@ export default {
         this.$store.commit("currentDrink", ""); // reset the currentDrink
         this.$store.commit("serveCustomer"); // set current customer's served to true
         this.serveMsg = "YUM. Thanks for the drink!";
+        this.brewCoffee = false; // resets the drink list
       } else if (this.currentDrink === "") {
         this.serveMsg = "You haven't made me a drink yet. Get brewin";
       } else {
         this.serveMsg =
           "That's not even a little bit close to what I ordered. Try again?";
+        this.brewCoffee = false; // resets the drink list
       }
     },
     refuseCustomer() {
@@ -325,6 +327,9 @@ export default {
       } else {
         this.msg = "You are out of cups in your carafe. Brew some more!";
       }
+    },
+    toggleScreen(){
+      !this.screenUp ? this.screenUp = true : this.screenUp = false
     },
   },
 };
