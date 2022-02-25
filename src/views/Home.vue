@@ -1,8 +1,9 @@
 <template>
+<v-app>
   <transition name="fadeIn" appear>
     <div class="home">
-      <h2>Welcome to Barista Simulator (Version {{ versionNumber }})</h2>
-      <br /><br />
+      <h2>Welcome to Barista Simulator<br /> (Version {{ versionNumber }})</h2>
+      <br />
       <h3>How to Play</h3>
       <p><strong><router-link to="/clock-in">Clock In</router-link></strong> to start taking customer <strong><router-link to="/orders">Orders</router-link></strong>!</p>
 
@@ -20,6 +21,7 @@
     </div>
     
   </transition>
+</v-app>
 </template>
 
 <script>
@@ -47,9 +49,20 @@ export default {
 </script>
 
 <style scoped>
+
+
+#app {
+  background-image: url(../assets/imgs/beans-after-1.png) !important;
+  background-size: auto;
+  background-repeat: repeat-y;
+  background-position-x: right;
+}
+
+
 .home {
   max-width: 50%;
   margin: auto;
+  margin-top: 25px;
 }
 
 
