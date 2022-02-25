@@ -5,7 +5,7 @@
       <div class="top-50">
 
         <div class="customer">
-          Top 50
+          Customer Avatar
         </div>
         
         <div class="counter">
@@ -16,9 +16,14 @@
 
 
       <div class="bot-50">
-        Bot 50%
+        
+
+        <div class="msgArea">
+         Message Area
+        </div>
+
         <div class="screen">
-        Screen
+         Screen
         </div>
 
       </div>
@@ -69,8 +74,6 @@ export default {
  height: 70%;
  display: flex;
  flex-direction: column;
- justify-content: flex-end;
- 
 }
 
 
@@ -87,14 +90,18 @@ export default {
 }
 
 
+.msgArea {
+ height: 10%;
+ background-color: green;
+}
 
 
 .screen {
  background-color: white;
-  width: 65%;
- height: 450px;
+ width: 65%;
  margin-left: auto;
  margin-right: auto;
+ flex-grow: 1;
 }
 
 </style>

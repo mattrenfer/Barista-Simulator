@@ -38,9 +38,6 @@
             <!-- End "Customer" component -->
           </div>
 
-          <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-            You have no orders. Clock in first!
-          </div>
         </div>
 
         <div class="counter">
@@ -52,32 +49,38 @@
 
       <div class="bot-50">
 
-        <div id="dialogueArea" v-show="this.$store.state.clockedIn && screenUp===false">
-        <!-- Serve Buttons -->
-        <div class="descriptiveText">
-          <p>{{ msg }}</p>
-          <p>{{ serveMsg }}</p>
-        </div>
-        <br />
+        <div id="dialogueArea">
 
-        <p id="customerOrder">
-          &quot;<em>{{ currentCustomer.order }}</em
-          >&quot;
-        </p>
-        <br />
-        <div class="selection" v-show="!dayDone">
-          <button @click="serveDrink()" v-if="!this.currentCustomer.served">
-            Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small"
-              >mdi-coffee</v-icon
-            >
-          </button>
-          <button @click="customerNext()" v-if="this.currentCustomer.served">
-            NEXT!&nbsp;
-          </button>
-          <button @click="refuseCustomer()" v-if="!this.currentCustomer.served">
-            Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
-          </button>
+       <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
+          You have no orders. Clock in first!
         </div>
+
+      <div v-show="this.$store.state.clockedIn && screenUp===false">
+        <!-- Serve Buttons -->
+          <div class="descriptiveText">
+            <p>{{ msg }}</p>
+            <p>{{ serveMsg }}</p>
+          </div>
+          <br />
+          <p id="customerOrder">
+            &quot;<em>{{ currentCustomer.order }}</em
+            >&quot;
+          </p>
+          <br />
+          <div class="selection" v-show="!dayDone">
+            <button @click="serveDrink()" v-if="!this.currentCustomer.served">
+              Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small"
+                >mdi-coffee</v-icon
+              >
+            </button>
+            <button @click="customerNext()" v-if="this.currentCustomer.served">
+              NEXT!&nbsp;
+            </button>
+            <button @click="refuseCustomer()" v-if="!this.currentCustomer.served">
+              Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
+            </button>
+          </div>
+         </div>
         </div>
 
         <div class="screen" v-show="screenUp">
@@ -88,7 +91,7 @@
             width="75%"
             class="screen"
           >
-            <v-card color="basil" height="500" rounded="xl">
+            <v-card color="basil" rounded="xl">
               <v-tabs
                 v-model="tab"
                 background-color="transparent"
@@ -408,7 +411,6 @@ export default {
   height: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 .customerLine {
@@ -427,10 +429,10 @@ export default {
 }
 
 .screen {
-  height: 560px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 1.5%;
   align-self: flex-end;
 }
 
