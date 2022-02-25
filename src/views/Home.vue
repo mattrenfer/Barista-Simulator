@@ -1,7 +1,7 @@
 <template>
   <transition name="fadeIn" appear>
     <div class="home">
-      <h2>Welcome to Barista Simulator</h2>
+      <h2>Welcome to Barista Simulator (Version {{ versionNumber }})</h2>
       <br /><br />
       <h3>How to Play</h3>
       <p><strong><router-link to="/clock-in">Clock In</router-link></strong> to start taking customer <strong><router-link to="/orders">Orders</router-link></strong>!</p>
@@ -15,7 +15,8 @@
         caffine level determines how fast you brew drinks.
       </p> -->
       <p>Earn cash through your <strong>tips</strong> and crappy minimum wage to have a life outside of your barista job and stuff.</p><br />
-      <router-link to="/orders"><button @click="play">Start</button></router-link>
+      <router-link to="/orders"><button @click="play">Start</button></router-link><br />
+      <router-link to="/settings"><button>Settings</button></router-link><br />
     </div>
     
   </transition>
@@ -25,9 +26,16 @@
 
 import useSound from 'vue-use-sound'
 import coffeeAmbiance from '@/assets/sound/morning-murmur.mp3'
+import { version } from '../../package.json';
 
 export default {
   name: "Home",
+  data() {
+    return {
+      versionNumber: version
+    }
+  },
+  
   setup() {
     const [play] = useSound(coffeeAmbiance, {volume: 0.05})
 

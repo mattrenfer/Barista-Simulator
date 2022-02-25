@@ -90,23 +90,15 @@
       </transition>
     </v-main>
 
-    <v-system-bar color="#37251b" lights-out>
-      <v-spacer></v-spacer>
-
-      Version {{ versionNumber }}
-      &nbsp;<router-link to="/settings"><v-icon class="icon-small">mdi-cog-outline</v-icon></router-link>
-    </v-system-bar>
   </v-app>
 </template>
 
 <script>
-import { version } from '../package.json';
 
 export default {
   name: "App",
   data() {
     return {
-      versionNumber: version,
       drawer: true,
       mini: true,
     };
