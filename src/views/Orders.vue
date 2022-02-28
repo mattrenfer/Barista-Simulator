@@ -486,6 +486,7 @@ export default {
 
 .vcard {
   flex-grow: 1;
+  box-shadow: none !important;
 }
 
 </style>
@@ -494,9 +495,9 @@ export default {
 
 // adds scrollbar to tabs window (but globally, so be careful)
 
-.v-window__container--is-active {
-  overflow-y: auto !important;
-}
+// .v-window__container--is-active {
+//   overflow-y: auto !important;
+// }
 
 
 </style>

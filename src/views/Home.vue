@@ -2,22 +2,16 @@
 <v-app>
   <transition name="fadeIn" appear>
     <div class="home">
-      <h2>Welcome to Barista Simulator<br /> (Version {{ versionNumber }})</h2>
+      <h2><router-link to="/">Barista Simulator</router-link><br /> (Version {{ versionNumber }})</h2>
       <br />
       <h3>How to Play</h3>
-      <p><strong><router-link to="/clock-in">Clock In</router-link></strong> to start taking customer <strong><router-link to="/orders">Orders</router-link></strong>!</p>
-
-      <p><strong><router-link to="/brew">Brew</router-link></strong> to make your hot drinks to serve customers (or refuse the rude ones)!</p>
-
-      <p>Your Barista <strong>level</strong> determines what drinks you can make.</p>
-
-      <!-- <p>
-        You can also drink your brewed drinks, giving you a caffine boost! Your
-        caffine level determines how fast you brew drinks.
-      </p> -->
-      <p>Earn cash through your <strong>tips</strong> and crappy minimum wage to have a life outside of your barista job and stuff.</p><br />
+      <p>&bull; <strong>Clock In</strong> to start taking customer orders</p>
+      <p>&bull; <strong>Brew</strong> your hot drinks to serve customers</p>
+      <p>&bull; Earn <strong>tips</strong> to purchase upgrades</p><br />
+      <br />
       <router-link to="/orders"><button @click="play">Start</button></router-link><br />
       <router-link to="/settings"><button>Settings</button></router-link><br />
+
     </div>
     
   </transition>
@@ -60,7 +54,7 @@ export default {
 
 
 .home {
-  max-width: 50%;
+  max-width: 75%;
   margin: auto;
   margin-top: 25px;
 }
