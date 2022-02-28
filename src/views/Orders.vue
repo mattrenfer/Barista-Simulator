@@ -37,7 +37,6 @@
             </div>
             <!-- End "Customer" component -->
           </div>
-
         </div>
 
         <div class="counter">
@@ -48,41 +47,48 @@
       <!-- End top 50 -->
 
       <div class="bot-50">
-
         <div class="messageArea">
-
-         <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
+          <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
             You have no orders. Clock in at the register first!
-        </div>
+          </div>
 
-          <p id="customerOrder" v-show="this.$store.state.clockedIn && !dayDone">
+          <p
+            id="customerOrder"
+            v-show="this.$store.state.clockedIn && !dayDone"
+          >
             &quot;<em>{{ currentCustomer.order }}</em
             >&quot;
           </p>
-
         </div>
         <div id="dialogueArea">
-
-      <div v-show="this.$store.state.clockedIn && screenUp===false">
-        <!-- Serve Buttons -->
-          <div class="descriptiveText">
-            <p>{{ msg }}</p>
-            <p>{{ serveMsg }}</p>
-          </div>
-          <div class="selection" v-show="!dayDone">
-            <button @click="serveDrink()" v-if="!this.currentCustomer.served">
-              Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small"
-                >mdi-coffee</v-icon
+          <div v-show="this.$store.state.clockedIn && screenUp === false">
+            <!-- Serve Buttons -->
+            <div class="descriptiveText">
+              <p>{{ msg }}</p>
+              <p>{{ serveMsg }}</p>
+            </div>
+            <div class="selection" v-show="!dayDone">
+              <button @click="serveDrink()" v-if="!this.currentCustomer.served">
+                Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small"
+                  >mdi-coffee</v-icon
+                >
+              </button>
+              <button
+                @click="customerNext()"
+                v-if="this.currentCustomer.served"
               >
-            </button>
-            <button @click="customerNext()" v-if="this.currentCustomer.served">
-              NEXT!&nbsp;
-            </button>
-            <button @click="refuseCustomer()" v-if="!this.currentCustomer.served">
-              Refuse&nbsp;<v-icon class="icon-small">mdi-hand-front-left </v-icon>
-            </button>
+                NEXT!&nbsp;
+              </button>
+              <button
+                @click="refuseCustomer()"
+                v-if="!this.currentCustomer.served"
+              >
+                Refuse&nbsp;<v-icon class="icon-small"
+                  >mdi-hand-front-left
+                </v-icon>
+              </button>
+            </div>
           </div>
-         </div>
         </div>
 
         <div class="screen" v-show="screenUp">
@@ -115,7 +121,7 @@
                   <v-card color="basil" flat>
                     <v-card-text>
                       <!-- "Drink" component (old "Pour Component") -->
-
+                      <h1 class="viewTitle">Drinks</h1>
                       <div id="coffeeSelection" v-show="!brewCoffee">
                         <div class="descriptiveText">
                           <p>
@@ -153,8 +159,6 @@
                   </v-card>
                 </v-tab-item>
               </v-tabs-items>
-
-
             </v-card>
 
             <v-system-bar dark color="indigo darken-2">
@@ -165,8 +169,6 @@
               <v-icon>mdi-battery</v-icon>
               <span>12:30</span>
             </v-system-bar>
-
-
           </v-sheet>
         </div>
       </div>
@@ -249,17 +251,17 @@ export default {
     }
     await this.loadDrinks();
   },
-  
-  watch: {  
+
+  watch: {
     clockedIn() {
       if (this.clockedIn && this.dayDone === false) {
         this.customerRandom(); // if you're clocking in, draw a random customer
       } else if (this.dayDone === true) {
-        this.loadCustomers();  // grab the original customer array
+        this.loadCustomers(); // grab the original customer array
         this.customerRandom(); // draw a random customer from it
-        this.dayDone = false;  // reset the day
-      }    
-    }
+        this.dayDone = false; // reset the day
+      }
+    },
   },
 
   methods: {
@@ -340,8 +342,8 @@ export default {
         this.msg = "You are out of cups in your carafe. Brew some more!";
       }
     },
-    toggleScreen(){
-      !this.screenUp ? this.screenUp = true : this.screenUp = false
+    toggleScreen() {
+      !this.screenUp ? (this.screenUp = true) : (this.screenUp = false);
     },
   },
 };
@@ -488,19 +490,12 @@ export default {
   flex-grow: 1;
   box-shadow: none !important;
 }
-
 </style>
 
 <style lang="scss">
-
 // adds scrollbar to tabs window (but globally, so be careful)
 
 // .v-window__container--is-active {
 //   overflow-y: auto !important;
 // }
-
-
 </style>
-
-
-
