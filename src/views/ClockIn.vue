@@ -36,7 +36,7 @@ export default {
       //this.$store.commit("clockedInTime", this.printTime());   // needs clock out time
       
       this.$store.commit("clockedIn", false);
-      this.$store.commit("currentCustomer", null);
+      this.$store.commit("currentCustomer", '');
     },
     
     printDate: function () {

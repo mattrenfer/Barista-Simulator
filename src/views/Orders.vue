@@ -55,7 +55,7 @@
             You have no orders. Clock in at the register first!
         </div>
 
-          <p id="customerOrder" v-show="this.$store.state.clockedIn">
+          <p id="customerOrder" v-show="this.$store.state.clockedIn && !dayDone">
             &quot;<em>{{ currentCustomer.order }}</em
             >&quot;
           </p>
@@ -118,7 +118,6 @@
 
                       <div id="coffeeSelection" v-show="!brewCoffee">
                         <div class="descriptiveText">
-                          <p>Checkout</p>
                           <p>
                             {{ msg }}
                           </p>
@@ -160,8 +159,6 @@
 
             <v-system-bar dark color="indigo darken-2">
               Tips: {{ currentTips }}
-              <v-spacer></v-spacer>
-              stuff and things
               <v-spacer></v-spacer>
               <v-icon>mdi-wifi-strength-4</v-icon>
               <v-icon>mdi-signal-cellular-outline</v-icon>
@@ -234,6 +231,9 @@ export default {
     cups() {
       return this.$store.state.currentCups;
     },
+    clockedIn() {
+      return this.$store.state.clockedIn;
+    },
     currentTips() {
       return dollarAmount(this.$store.state.currentTips);
     },
@@ -248,6 +248,18 @@ export default {
       this.customerRandom();
     }
     await this.loadDrinks();
+  },
+  
+  watch: {  
+    clockedIn() {
+      if (this.clockedIn && this.dayDone === false) {
+        this.customerRandom(); // if you're clocking in, draw a random customer
+      } else if (this.dayDone === true) {
+        this.loadCustomers();  // grab the original customer array
+        this.customerRandom(); // draw a random customer from it
+        this.dayDone = false;  // reset the day
+      }    
+    }
   },
 
   methods: {
@@ -281,7 +293,7 @@ export default {
         this.$store.commit("currentCustomer", unServedCustomers[num]); // find a random customer, store in state
       } else {
         this.dayDone = true;
-        this.msg = "All customers served! Clock out and in to serve more!";
+        this.serveMsg = "All customers served! Clock out and in to serve more!";
       }
     },
     serveDrink() {
