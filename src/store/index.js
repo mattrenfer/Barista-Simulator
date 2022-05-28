@@ -41,6 +41,9 @@ const mutations = {
     if (localStorage.getItem('chalkBoard')) {
       state.chalkBoard = localStorage.getItem('chalkBoard');
     }
+    if (localStorage.getItem('clockedIn')) {
+      state.clockedIn = localStorage.getItem('clockedIn');
+    }
   },
 
   levelUp(state) {
@@ -59,6 +62,7 @@ const mutations = {
   },
   clockedIn(state, clocked) {
     state.clockedIn = clocked;
+    localStorage.setItem('clockedIn', state.clockedIn);
   },
   currentCustomer(state, customer) {
     state.currentCustomer = customer;
