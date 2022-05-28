@@ -22,6 +22,7 @@ const state = {
   currentCups: 0,
   carafePrice: 1,
   chalkBoard: false,
+  currentTime: "8:00",
 };
 
 const mutations = {

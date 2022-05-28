@@ -91,7 +91,7 @@
             </div>
 
             <div class="pourArea" v-show="!dayDone && this.$store.state.currentDrink && !this.$store.state.currentDrinkPoured">
-            <button @click="brewSelectedCoffee()" v-if="!this.currentCustomer.served && !brewCoffee">
+            <button @click="pourSelectedCoffee()" v-if="!this.currentCustomer.served && !brewCoffee">
               Pour <br />{{ currentDrink }}&nbsp;<v-icon class="icon-small"
                   >mdi-coffee</v-icon
                 >
@@ -187,7 +187,7 @@
               <v-icon>mdi-wifi-strength-4</v-icon>
               <v-icon>mdi-signal-cellular-outline</v-icon>
               <v-icon>mdi-battery</v-icon>
-              <span>12:30</span>
+              <span>{{ currentTime }}</span>
             </v-system-bar>
           </v-sheet>
         </div>
@@ -264,6 +264,9 @@ export default {
     },
     currentDrinkPoured(){
       return this.$store.state.currentDrinkPoured;
+    },
+    currentTime(){
+      return this.$store.state.currentTime;
     }
   },
 
@@ -356,8 +359,7 @@ export default {
       this.customerRandom();
     },
     setSelectedCoffee(name, reqLevel) {
-      if (this.cups > 0) {
-        this.selectedCoffee = name;
+      this.selectedCoffee = name;
         if (reqLevel > this.$store.state.currentLevel) {
           // if the required level of the selected coffee is greater than the current level
           this.msg = `You haven't the skillz to make a ${this.selectedCoffee} yet! Learn how to brew better, bro.`;
@@ -366,13 +368,14 @@ export default {
           this.skillLock = false;
           this.ringUpCoffee = true;
         }
+      }, 
+    pourSelectedCoffee(){
+      if (this.cups > 0) {
+        this.brewCoffee = true;
+        this.currentDrinkPoured = true;
       } else {
-        this.msg = "You are out of cups in your carafe. Brew some more!";
+          this.msg = "You are out of cups in your carafe. Brew some more!";
       }
-    },
-    brewSelectedCoffee(){
-      this.brewCoffee = true;
-      this.currentDrinkPoured = true;
     },
     toggleScreen() {
       !this.screenUp ? (this.screenUp = true) : (this.screenUp = false);
