@@ -44,6 +44,9 @@ const mutations = {
     if (localStorage.getItem('clockedIn')) {
       state.clockedIn = localStorage.getItem('clockedIn');
     }
+    if (localStorage.getItem('currentCups')) {
+      state.currentCups = localStorage.getItem('currentCups');
+    }
   },
 
   levelUp(state) {
@@ -75,9 +78,11 @@ const mutations = {
   },
   brewCoffee(state) {
     state.currentCups += state.currentCarafe;
+    localStorage.setItem('currentCups', state.currentCups);
   },
   pourCoffee(state) {
     state.currentCups--;
+    localStorage.setItem('currentCups', state.currentCups);
   },
   buyCarafe(state) {
     state.currentCarafe += 2;
