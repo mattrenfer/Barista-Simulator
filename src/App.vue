@@ -82,9 +82,8 @@
     <v-main>
 
       <transition
+      name="fade"
       mode="out-in"
-      enter-active-class="animate__animated animate__fadeIn"
-      leave-active-class="animate__animated animate__fadeOut"
       > 
       <router-view />
       </transition>
@@ -276,10 +275,11 @@ button {
 
 /* Animation Styles */
 
-.fadeIn-enter-active {
-  transition: opacity 2.5s;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
 }
-.fadeIn-enter /* .fade-leave-active in <2.1.8 */ {
+.fade-leave-from, .fade-leave-to {
   opacity: 0;
 }
+
 </style>
