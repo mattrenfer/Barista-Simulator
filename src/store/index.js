@@ -17,6 +17,7 @@ const state = {
   clockedIn: false,
   currentCustomer: '',
   currentDrink: '',
+  currentDrinkPoured: false,
   currentCarafe: 4,
   currentCups: 0,
   carafePrice: 1,
@@ -72,6 +73,7 @@ const mutations = {
   },
   serveCustomer(state) {
     state.currentCustomer.served = true;
+    state.currentDrinkPoured = false;
   },
   currentDrink(state, drink) {
     state.currentDrink = drink;
@@ -83,6 +85,7 @@ const mutations = {
   pourCoffee(state) {
     state.currentCups--;
     localStorage.setItem('currentCups', state.currentCups);
+    state.currentDrinkPoured = true;
   },
   buyCarafe(state) {
     state.currentCarafe += 2;

@@ -49,7 +49,7 @@
       <div class="bot-50">
         <div class="messageArea">
           <div class="descriptiveText" v-show="!this.$store.state.clockedIn">
-            You have no orders. Clock in at the register first!
+            A new barista shift awaits you. Clock in to get to work.
           </div>
 
           <p
@@ -68,7 +68,7 @@
               <p>{{ serveMsg }}</p>
             </div>
             <div class="selection" v-show="!dayDone">
-              <button @click="serveDrink()" v-if="!this.currentCustomer.served">
+              <button @click="serveDrink()" v-if="!this.currentCustomer.served && this.$store.state.currentDrinkPoured && this.$store.state.currentDrink">
                 Serve {{ currentDrink }}&nbsp;<v-icon class="icon-small"
                   >mdi-coffee</v-icon
                 >
@@ -87,6 +87,24 @@
                   >mdi-hand-front-left
                 </v-icon>
               </button>
+
+            </div>
+
+            <div class="pourArea" v-show="!dayDone && this.$store.state.currentDrink && !this.$store.state.currentDrinkPoured">
+            <button @click="brewSelectedCoffee()" v-if="!this.currentCustomer.served && !brewCoffee">
+              Pour <br />{{ currentDrink }}&nbsp;<v-icon class="icon-small"
+                  >mdi-coffee</v-icon
+                >
+            </button>
+
+            <div v-if="brewCoffee">
+              <Pour
+                :selectedCoffee="selectedCoffee"
+                @resetIt="brewCoffee = $event"
+              />
+            </div>
+
+
             </div>
           </div>
         </div>
@@ -121,8 +139,8 @@
                   <v-card color="basil" flat>
                     <v-card-text>
                       <!-- "Drink" component (old "Pour Component") -->
-                      <h1 class="viewTitle">Drinks</h1>
-                      <div id="coffeeSelection" v-show="!brewCoffee">
+                      <h1 class="viewTitle">Check Out</h1>
+                      <div id="coffeeSelection" v-show="!ringUpCoffee">
                         <div class="descriptiveText">
                           <p>
                             {{ msg }}
@@ -144,12 +162,14 @@
                         </div>
                       </div>
 
-                      <div v-if="brewCoffee">
-                        <Pour
+                      <div v-if="ringUpCoffee">
+                        <RingUp
                           :selectedCoffee="selectedCoffee"
-                          @resetIt="brewCoffee = $event"
+                          @resetIt="ringUpCoffee = $event"
                         />
                       </div>
+
+                      
                     </v-card-text>
                   </v-card>
                 </v-tab-item>
@@ -187,6 +207,7 @@
 
 <script>
 import Pour from "@/components/Pour.vue";
+import RingUp from "@/components/RingUp.vue";
 import ClockIn from "@/views/ClockIn.vue";
 import Shop from "@/views/Shop.vue";
 import { random } from "@/shared/constants";
@@ -197,6 +218,7 @@ export default {
   name: "Orders",
   components: {
     Pour,
+    RingUp,
     ClockIn,
     Shop,
   },
@@ -204,13 +226,14 @@ export default {
     return {
       screenUp: false,
       brewCoffee: false,
+      ringUpCoffee: false,
       selectedCoffee: "",
       dayDone: false,
       msg: "",
       serveMsg: "",
 
       tab: null,
-      items: ["Clock In", "Drinks", "Shop"],
+      items: ["Clock In", "Check Out", "Shop"],
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     };
   },
@@ -239,6 +262,9 @@ export default {
     currentTips() {
       return dollarAmount(this.$store.state.currentTips);
     },
+    currentDrinkPoured(){
+      return this.$store.state.currentDrinkPoured;
+    }
   },
 
   async created() {
@@ -305,18 +331,20 @@ export default {
         (this.currentDrink &&
           this.currentCustomer.drink.includes(this.currentDrink))
       ) {
+        this.$store.commit("serveCustomer"); // set current customer's served to true
         this.$store.commit("levelUp");
         this.$store.commit("getTip", this.$store.state.currentCustomer.tip); // tip the Barista!
         this.$store.commit("currentDrink", ""); // reset the currentDrink
-        this.$store.commit("serveCustomer"); // set current customer's served to true
         this.serveMsg = "YUM. Thanks for the drink!";
-        this.brewCoffee = false; // resets the drink list
+        this.brewCoffee = false;
+        this.ringUpCoffee = false; // resets the drink list
       } else if (this.currentDrink === "") {
         this.serveMsg = "You haven't made me a drink yet. Get brewin";
       } else {
         this.serveMsg =
           "That's not even a little bit close to what I ordered. Try again?";
-        this.brewCoffee = false; // resets the drink list
+        this.brewCoffee = false; 
+        this.ringUpCoffee = false; // resets the drink list
       }
     },
     refuseCustomer() {
@@ -336,11 +364,15 @@ export default {
           this.brewCoffee = false; // don't advance & display message
         } else {
           this.skillLock = false;
-          this.brewCoffee = true; // otherwise, advance
+          this.ringUpCoffee = true;
         }
       } else {
         this.msg = "You are out of cups in your carafe. Brew some more!";
       }
+    },
+    brewSelectedCoffee(){
+      this.brewCoffee = true;
+      this.currentDrinkPoured = true;
     },
     toggleScreen() {
       !this.screenUp ? (this.screenUp = true) : (this.screenUp = false);
@@ -454,6 +486,10 @@ export default {
 .messageArea {
   height: 25px;
   padding: 25px;
+}
+
+.pourArea {
+  margin-top: 80px;
 }
 
 .screen {
