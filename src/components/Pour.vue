@@ -44,7 +44,6 @@ export default {
     isDrinkDone(timerDone) {
       this.drinkDone = timerDone;
       this.$store.commit("pourCoffee");
-      this.$store.commit("currentDrink", this.selectedCoffee);
     },
   },
 };
