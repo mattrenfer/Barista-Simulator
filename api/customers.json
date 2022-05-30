@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "reqLevel": 1,
+    "name": "Jo Mugsy",
+    "order": "Hello, I'd like a coffee, please.",
+    "drink": [
+      "Regular",
+      "Espresso",
+      "Mocha",
+      "Latte"
+    ],
+    "tip": 0.25,
+    "served": false
+  },
+  {
+    "id": 2,
+    "reqLevel": 1,
+    "name": "Jill Grind",
+    "order": "I'll take a regular, thanks.",
+    "drink": "Regular",
+    "tip": 0.1,
+    "served": false
+  },
+  {
+    "id": 3,
+    "reqLevel": 1,
+    "name": "Jack Venti",
+    "order": "Cup of joe for me.",
+    "drink": "Regular",
+    "tip": 0.05,
+    "served": false
+  },
+  {
+    "id": 4,
+    "reqLevel": 1,
+    "name": "Billy Bean",
+    "order": "Surprise me.",
+    "drink": [
+      "Regular",
+      "Espresso",
+      "Mocha",
+      "Latte"
+    ],
+    "tip": 0.05,
+    "served": false
+  },
+  {
+    "id": 5,
+    "reqLevel": 3,
+    "name": "Antonio Espresso",
+    "order": "Guess what I like.",
+    "drink": "Espresso",
+    "tip": 0.3,
+    "served": false
+  },
+  {
+    "id": 6,
+    "reqLevel": 2,
+    "name": "Negative Ned",
+    "order": "I'd like a Mocha, please",
+    "drink": "Mocha",
+    "tip": 0.1,
+    "served": false
+  },
+  {
+    "id": 7,
+    "reqLevel": 2,
+    "name": "Piper Peppermint",
+    "order": "I'd like a Peppermint Mocha, please",
+    "drink": "Mocha",
+    "tip": 0.25,
+    "served": false
+  },
+  {
+    "id": 8,
+    "reqLevel": 10,
+    "name": "Tucker Tipswell",
+    "order": "Latte love for me, please",
+    "drink": "Latte",
+    "tip": 1,
+    "served": false
+  },
+  {
+    "id": 9,
+    "reqLevel": 2,
+    "name": "Mary Mocha",
+    "order": "How's your Mocha here?",
+    "drink": "Mocha",
+    "tip": 0.5,
+    "served": false
+  },
+  {
+    "id": 10,
+    "reqLevel": 3,
+    "name": "Easton Espresso",
+    "order": "Figure me out",
+    "drink": "Espresso",
+    "tip": 0.3,
+    "served": false
+  },
+  {
+    "id": 11,
+    "reqLevel": 10,
+    "name": "Tammy Tourist",
+    "order": "Absolutely love what you've done with the place. I'll have what's on your stand. A vanilla Latte, please.",
+    "drink": "Latte",
+    "tip": 2,
+    "served": false,
+    "tourist": true
+  }
+]
