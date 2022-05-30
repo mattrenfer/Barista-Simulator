@@ -5,7 +5,9 @@ set -e
 
 # build
 npm run build
-npm version patch
+
+# ups the version number in package.json
+# npm version patch 
 
 # navigate into the build output directory
 cd dist
